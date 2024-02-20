@@ -5,67 +5,68 @@
     $allCheeses = getAllCheeses(); // I am using this variable in the html to creater filters for each cheese. It is more efficient to just store all the cheeses in a variable and then use it whenever i need it.
     $types = array();
     $origins = array();
-    $name = ""; 
+    $name = $types = $origins = $strength = "";
+    $priceRange = array(0.001,1000); //make sure there is always a valid range for min and max price per gram
 
     foreach($allCheeses as $cheese)
     {
         $uniqueTypes[] = $cheese->type;
         $uniqueOrigins[] = $cheese->origin;
+        $uniqueStrengths[] = $cheese->strength;
     }
 
-    if(isset($_REQUEST["search"]))
+    if(isset($_REQUEST["search"])) //if user entered a name
     {
-        $name = $_REQUEST["search"];
+        $name = $_REQUEST["search"]; //get the entered name
     }
 
-    if(isset($_REQUEST["cheeseType"]))
+    if(isset($_REQUEST["cheeseType"])) //if the user selected a cheese type from the checkboxes
     {
-        $types = $_REQUEST["cheeseType"];
+        $types = $_REQUEST["cheeseType"]; //get the selected cheese types
     }
 
-    if(isset($_REQUEST["cheeseOrigin"]))
+    if(isset($_REQUEST["cheeseOrigin"])) //if the user selected origin from the checkboxes
     {
-        $origins = $_REQUEST["cheeseOrigin"];
+        $origins = $_REQUEST["cheeseOrigin"]; //get all the selected origins
+    }
+    
+    if(isset($_REQUEST["cheeseStrength"])) //if the user selected strength from the checkboxes
+    {
+        $strength = $_REQUEST["cheeseStrength"]; //get all the selected strengths
+    }
+    if(isset($_REQUEST["minPrice"]) || isset($_REQUEST["maxPrice"])) 
+    {
+        if(empty($_REQUEST["minPrice"]))//if min price input is empty
+        {
+            //use the default value set at the start
+        }
+        else
+        {
+            $priceRange[0] = $_REQUEST["minPrice"]; //else set it to what the user entered
+        }
+        
+        if(empty($_REQUEST["maxPrice"]))//if max price input is empty
+        {
+            //use the default value set at the start
+        }
+        else
+        {
+            $priceRange[1] = $_REQUEST["maxPrice"];//else set it to what the user entered
+        } 
+        
     }
 
-    if(!empty($types) || !empty($origins) || !empty($name))
+
+    if(!empty($types) || !empty($origins) || !empty($name) || !empty($strength) || !empty($priceRange)) //if any is true
     {
-        $results = getFilteredCheeses($name,$types, $origins);
+        $results = getFilteredCheeses($name,$types, $origins, $strength, $priceRange); //then get the cheeses based on all the filters
     }
     else
     {
-        $results = getAllCheeses();
+        $results = getAllCheeses(); //else display all cheeses
     }
 
-   /* //for each cheeseType selected by the user, return cheeses based on the cheese type selected.
-    if(isset($_REQUEST["cheeseType"]))
-    {
-        $types = $_REQUEST["cheeseType"];
-        $results = [];
 
-        //makes sure that if multiple checkboxes are selected, all cheeses with the selected types are returned.
-        foreach($types as $type)
-        {
-            $cheese = getCheeseByType($type);
-            $results = array_merge($results,$cheese);                
-        }
-
-
-    }
-    if(isset($_REQUEST["cheeseOrigin"]))
-    {
-        $origins = $_REQUEST["cheeseOrigin"];
-        $results = [];
-
-        //makes sure that if multiple checkboxes are selected, all cheeses with the selected origins are returned.
-        foreach($origins as $origin)
-        {
-            $cheese = getCheeseByOrigin($origin);
-            $results = array_merge($results,$cheese);                
-        }
-
-
-    }*/
 
     require_once "../index.php";
 ?>

@@ -71,7 +71,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         $results = $statement->fetchAll(PDO::FETCH_CLASS,"Cheese");
         return $results;        
     }
-    function getFilteredCheeses($name,$types, $origins)
+    function getFilteredCheeses($name,$types, $origins, $strength, $priceRange)
     {
         global $pdo;
         //this is the query i will be executing, the 1=1 is always true, so i can just use AND and not worry about if something is the first where condition
@@ -113,8 +113,35 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
             {
                 $params = $origins;
             }
+                  
+        }
+        if(!empty($strength))
+        {
+            $placeholders = str_repeat('?,', count($strength) - 1) . '?';
+            $query .= " AND strength IN ($placeholders)";
             
-            
+            if(!empty($params))
+            {
+                $params = array_merge($params, $strength);
+            }
+            else
+            {
+                $params = $strength;
+            }
+        }
+        if(!empty($priceRange))
+        {
+            $query .= " AND pricePerGram BETWEEN ? and ?"; 
+            if(!empty($params))
+            {
+                $params = array_merge($params, $priceRange);
+            }
+            else
+            {
+                $params = $priceRange;
+            }
+            print_r($priceRange);
+
         }
 
         $statement = $pdo->prepare($query);//the query might look something like this: SELECT * FROM Cheese WHERE 1=1 AND type IN(?,?,?) AND origin IN (?,?)
