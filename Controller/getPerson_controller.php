@@ -12,7 +12,7 @@ require_once "../Model/dataAccess.php";
 
     $results = getAllManagers();
 
-
+//test saving
 
 
     $resultsCustomer = getAllCustomers();
