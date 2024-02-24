@@ -71,6 +71,14 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         $results = $statement->fetchAll(PDO::FETCH_CLASS,"Cheese");
         return $results;        
     }
+    function getCheeseById($id)
+    {
+        global $pdo;
+        $statement = $pdo->prepare("SELECT * FROM Cheese WHERE id = ?");
+        $statement->execute([$id]);
+        $results = $statement->fetchAll(PDO::FETCH_CLASS,"Cheese");
+        return $results;        
+    }
     function getFilteredCheeses($name,$types, $origins, $strength, $priceRange)
     {
         global $pdo;

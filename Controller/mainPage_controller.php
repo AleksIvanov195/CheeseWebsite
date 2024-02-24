@@ -1,6 +1,9 @@
 <?php
+    
     require_once "../Model/Cheese.php";
     require_once "../Model/dataAccess.php";
+    require_once "addToBasket_controller.php";
+    
 
     $allCheeses = getAllCheeses(); // I am using this variable in the html to creater filters for each cheese. It is more efficient to just store all the cheeses in a variable and then use it whenever i need it.
     $types = array();
@@ -8,6 +11,21 @@
     $name = $types = $origins = $strength = "";
     $priceRange = array(0.001,1000); //make sure there is always a valid range for min and max price per gram
 
+
+    if(empty($_REQUEST["weight"])) 
+    {   
+        //status = please enter valid weigth e.g. 1.5
+        
+    }
+    else
+    {
+        addToBasket($_REQUEST["cheeseId"], $_REQUEST["weight"]);
+    }
+
+    print_r(getBasketItems());
+    $basketItems = getBasketItems();
+    
+    
     foreach($allCheeses as $cheese)
     {
         $uniqueTypes[] = $cheese->type;
