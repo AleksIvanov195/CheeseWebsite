@@ -29,7 +29,11 @@
 
     function getBasketItems() 
     {
-        return $_SESSION["basket"];
+        if(!empty($_SESSION["basket"]))
+        {
+            return $_SESSION["basket"];
+        }
+        
     }
 
 

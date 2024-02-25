@@ -22,7 +22,7 @@
         addToBasket($_REQUEST["cheeseId"], $_REQUEST["weight"]);
     }
 
-    print_r(getBasketItems());
+    //print_r(getBasketItems());
     $basketItems = getBasketItems();
     
     
@@ -31,6 +31,7 @@
         $uniqueTypes[] = $cheese->type;
         $uniqueOrigins[] = $cheese->origin;
         $uniqueStrengths[] = $cheese->strength;
+        sort($uniqueStrengths);
     }
 
     if(isset($_REQUEST["search"])) //if user entered a name

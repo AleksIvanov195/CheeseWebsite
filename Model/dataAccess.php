@@ -148,7 +148,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
             {
                 $params = $priceRange;
             }
-            print_r($priceRange);
+            //print_r($priceRange);
 
         }
 
