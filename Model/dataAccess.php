@@ -47,6 +47,21 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         $statement = $pdo->prepare("INSERT INTO Customer (personId, registeredDate) VALUES (?, ?)");
         $statement->execute([$personId, date('Y-m-d')]);                                 
     }
+    function getCustomer($username, $password)
+    {
+        global $pdo;
+        $statement = $pdo->prepare("SELECT * FROM Person WHERE firstName = ?");
+        $statement->execute([$username]);
+        $statement->setFetchMode(PDO::FETCH_CLASS, 'Customer');
+        $user = $statement->fetch();
+        if ($user && password_verify($password, $user->password)) {
+            // Password is correct
+            return $user;
+        } else {
+            // Invalid username or password
+            return null;
+        }
+    }
     function getAllCheeses()
     {
         global $pdo;
