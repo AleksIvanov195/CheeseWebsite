@@ -78,7 +78,7 @@
 
     if(!empty($types) || !empty($origins) || !empty($name) || !empty($strength) || !empty($priceRange)) //if any is true
     {
-        $results = getFilteredCheeses($name,$types, $origins, $strength, $priceRange); //then get the cheeses based on all the filters
+        $results = getFilteredCheeses($name,$types, $origins, $strength, $priceRange); //then get the cheeses based on the selected filters and name
     }
     else
     {

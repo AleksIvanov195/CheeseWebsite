@@ -36,6 +36,17 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         return $results;
 
     }
+    function registerCustomer($firstName, $lastName, $email,$address, $contactNumber, $password)
+    {
+        global $pdo;
+        $statement = $pdo->prepare("INSERT INTO Person (firstName, lastName, email, address, contactNumber, password, role)
+                                    VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $statement->execute([$firstName, $lastName, $email,$address, $contactNumber, password_hash($password,PASSWORD_DEFAULT), "Customer"]);
+
+        $personId = $pdo->lastInsertId();
+        $statement = $pdo->prepare("INSERT INTO Customer (personId, registeredDate) VALUES (?, ?)");
+        $statement->execute([$personId, date('Y-m-d')]);                                 
+    }
     function getAllCheeses()
     {
         global $pdo;

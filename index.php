@@ -8,7 +8,7 @@
                     <a href="mainPage_controller.php">Home</a>
                     <a href="#about">About</a>
                     <a href="#contact">Contact</a>
-                    <a href="#contact">Log in</a>
+                    <a href="login_controller.php">Log in</a>
                     <a href="basket_controller.php">Basket</a>
   
             </nav>
@@ -23,7 +23,7 @@
 
                         <?php foreach(array_unique($uniqueTypes) as $type):?>
                         <ul style = "margin-left: -30px; margin-bottom: -10px;">             
-                            <input type="checkbox" id="<?= $type?>" name="cheeseType[]" value="<?= $type?>"> 
+                            <input type="checkbox" name="cheeseType[]" value="<?= $type?>"> 
                             <label for="<?= $type?>"><?= $type?></label>  
                         </ul>
                         <?php endforeach?> 
@@ -34,7 +34,7 @@
 
                         <?php foreach(array_unique($uniqueOrigins) as $origin):?>
                         <ul style = "margin-left: -30px; margin-bottom: -10px">
-                        <input type="checkbox" id="<?= $origin?>" name="cheeseOrigin[]" value="<?= $origin?>"> 
+                        <input type="checkbox" name="cheeseOrigin[]" value="<?= $origin?>"> 
                         <label for="<?= $origin?>"><?= $origin?></label>         
                         </ul>
                         <?php endforeach?>
@@ -45,7 +45,7 @@
 
                         <?php foreach(array_unique($uniqueStrengths) as $strength):?>
                         <ul style = "margin-left: -30px; margin-bottom: -10px">
-                        <input type="checkbox" id="<?= $strength?>" name="cheeseStrength[]" value="<?= $strength?>"> 
+                        <input type="checkbox"name="cheeseStrength[]" value="<?= $strength?>"> 
                         <label for="<?= $strength?>"><?= $strength?></label> 
                         </ul> 
                         <?php endforeach?> 
@@ -53,8 +53,8 @@
                         
                         <p style = "margin-bottom: -30px; font-weight: bold">Price per gram</p>
                         <br></br>
-                        <input type="text" id="minPrice" name="minPrice" placeholder="Min Price" style="width: 30%;">
-                        <input type="text" id="maxPrice" name="maxPrice" placeholder="Max Price" style="width: 30%;">                 
+                        <input type="text" name="minPrice" placeholder="Min Price" style="width: 30%;">
+                        <input type="text" name="maxPrice" placeholder="Max Price" style="width: 30%;">                 
                 </form>
             </div>
 
