@@ -2,10 +2,17 @@
     require_once "../Model/dataAccess.php";
     require_once "../Model/Person.php";
     require_once "../Model/Customer.php";
+    if(session_status() == PHP_SESSION_NONE)
+    {
+        // session has not started
+        session_start();
+    }
 
     if(!empty($_REQUEST["username"]) && !empty($_REQUEST["password"]))
     {
         $results = getCustomer($_REQUEST["username"], $_REQUEST["password"]);
+        $_SESSION["Username"] = $results->firstName;
+        header("Location: mainPage_controller.php");
     }
 
 

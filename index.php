@@ -8,12 +8,16 @@
                     <a href="mainPage_controller.php">Home</a>
                     <a href="#about">About</a>
                     <a href="#contact">Contact</a>
-                    <a href="login_controller.php">Log in</a>
+                    <?php if (empty($_SESSION["Username"])):?>
+                        <a href ="login_controller.php">Hi, Log in</a>
+                    <?php else:?>
+                        <a>Hi, <?=$_SESSION["Username"] ?></a>
+                    <?php endif?>   
                     <a href="basket_controller.php">Basket</a>
-  
+                
             </nav>
             <div class = "filters">
-                <br></br>
+            
                 <form method = "post" action = "mainPage_controller.php">
                     <input name = "search" placeholder="Search for cheese">
                     <input type = "submit" value = "Search"/>
@@ -34,7 +38,7 @@
 
                         <?php foreach(array_unique($uniqueOrigins) as $origin):?>
                         <ul style = "margin-left: -30px; margin-bottom: -10px">
-                        <input type="checkbox" name="cheeseOrigin[]" value="<?= $origin?>"> 
+                        <input type="checkbox" name="cheeseOrigin[]" value="<?= $origin?> "> 
                         <label for="<?= $origin?>"><?= $origin?></label>         
                         </ul>
                         <?php endforeach?>
@@ -72,14 +76,14 @@
                             <p>Strength: <?= $cheese->strength?></p>
                             <p>Price: £<?= $cheese->pricePerGram?>/g</p>
                         
-                        <p><form action="mainPage_controller.php">
-                            <input type ="hidden"name="cheeseId" value="<?= $cheese->id?>" />
-                            <input  name="weight" placeholder="Weight: e.g, 250 grams"/>
-                            <br></br>
-                            <input style="a"type="submit" value="addToBasket" style="background-color:"/>
-                            </form></p>
+                            <p><form action="mainPage_controller.php">
+                                <input type ="hidden"name="cheeseId" value="<?= $cheese->id?>" />
+                                <input name="weight" type = "number"  min="100" max="20000"/>
+                                <br></br>
+                                <input type="submit" value="Add to Basket" style="background-color:"/>
+                                </form></p>
                             </div>
-                            </div>  
+                        </div>  
                 <?php endforeach ?>
                 <?php endif?> 
                  

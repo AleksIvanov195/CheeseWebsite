@@ -1,0 +1,87 @@
+/* page styles */
+body
+{
+  margin: 0;
+  padding: 0;
+}
+nav
+{
+  display: flex;
+  color: gray;
+  margin-bottom: 10px;
+  height: 60px;
+  size: 30px;
+  background-color: rgb(4, 4, 34);
+  fill: 100%;
+  margin-top: 0;
+  padding-top: 0;
+  align-items: center;
+  
+}
+nav > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-size: 23px;
+  text-decoration: none;
+  color: white;
+  height: 100%;
+  width: 100px;
+}
+nav > a:hover
+{
+  background-color: rgb(40, 40, 51);
+}
+/* basket styles */
+main{grid-area:M;}
+nav{grid-area:N;}
+.purchaseCard{grid-area:C}
+
+body
+{
+    display:grid;
+    grid-template-columns: 0.5fr 2fr 2fr 1.5fr;
+    grid-template-rows:auto;
+    grid-template-areas:
+    "N N N N"
+    ". . . C"
+    ". M M C"
+    ". M M C"
+    ;
+}
+main
+{
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 90%;
+    height: 200px;
+    margin: 10px;
+    border: 0.5px solid rgb(182, 181, 181);
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+  }
+  
+  .card h3 {
+    
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    align-self: center;
+  }
+  
+  .cardBody {
+    
+    padding: 5px;
+  }
+  
+  .cardBody > p, form {
+    margin-bottom: -10px;
+  }
+  
+

@@ -102,8 +102,8 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         global $pdo;
         $statement = $pdo->prepare("SELECT * FROM Cheese WHERE id = ?");
         $statement->execute([$id]);
-        $results = $statement->fetchAll(PDO::FETCH_CLASS,"Cheese");
-        return $results;        
+        $result = $statement->fetchObject("Cheese"); //will fetch only 1 cheese matching the id
+        return $result;        
     }
     function getFilteredCheeses($name,$types, $origins, $strength, $priceRange)
     {

@@ -2,31 +2,19 @@
     require_once "../Model/Cheese.php";
     require_once "../Model/dataAccess.php";
     require_once "../Model/OrderedItem.php";
-    session_start();
-
-    /*if(!isset($_SESSION["basket"])) 
-    { 
-        $_SESSION["basket"] = [];
-    }
-    if(isset($_REQUEST["cheeseId"])) 
+    if(session_status() == PHP_SESSION_NONE)
     {
-        $cheeseId = $_REQUEST["cheeseId"];
-        $cheeseObjects = getCheeseById($cheeseId);
-        $_SESSION["basket"] = array_merge($_SESSION["basket"], $cheeseObjects);
-    }*/
-   function addToBasket($cheeseId, $weigth) 
-    {
-        $cheeseObjects = getCheeseById($cheeseId);
-        //$_SESSION["basket"] = array_merge($_SESSION["basket"], $cheeseObjects);
-        foreach($cheeseObjects as $cheese)
-        {
-
-            $item = new OrderedItem($cheese, $weigth);
-        }
-        $_SESSION["basket"][] = $item;
-        
+        // session has not started
+        session_start();
     }
-
+    //Add to basket
+    function addToBasket($cheeseId, $weigth) 
+    {
+        $cheese = getCheeseById($cheeseId); 
+        $item = new OrderedItem($cheese, $weigth);   
+        $_SESSION["basket"][] = $item;       
+    }
+    //get basket items from the session
     function getBasketItems() 
     {
         if(!empty($_SESSION["basket"]))
