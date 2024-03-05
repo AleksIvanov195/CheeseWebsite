@@ -11,7 +11,7 @@
     }
     else
     {
-        $status = "WTF";
+        $status = "";
     }
 
 

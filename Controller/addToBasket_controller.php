@@ -14,7 +14,7 @@
         $item = new OrderedItem($cheese, $weigth);   
         $_SESSION["basket"][] = $item;       
     }
-    //get basket items from the session
+    //Get basket items from the session
     function getBasketItems() 
     {
         if(!empty($_SESSION["basket"]))

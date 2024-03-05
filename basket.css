@@ -55,33 +55,36 @@ main
   display:flex;
   flex-wrap:wrap;
 }
+.header{grid-area:H;}
+.cardBody{grid-area:B;}
 
 .card {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+    display:grid;
+    grid-template-columns:3fr 3fr;
+    grid-template-rows:auto;
     width: 90%;
     height: 200px;
     margin: 10px;
     border: 0.5px solid rgb(182, 181, 181);
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
-  }
-  
-  .card h3 {
+    grid-template-areas:
+    "H B "
+
+    ;
     
-    margin: 0;
-    padding: 10px;
-    text-align: center;
-    align-self: center;
   }
-  
-  .cardBody {
-    
-    padding: 5px;
+  .card > .header
+  {
+   
   }
-  
-  .cardBody > p, form {
-    margin-bottom: -10px;
+
+  .card > .cardBody
+  {
+    width: 90%;
+    height: 90%;
   }
+
+
   
 

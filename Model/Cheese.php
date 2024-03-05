@@ -3,9 +3,9 @@ class Cheese
 {
     private $id;
     private $name;
-    private $type; //hard or soft
+    private $type; 
     private $origin;
-    private $strength; // 1-5
+    private $strength; 
     private $pricePerGram;
 
 

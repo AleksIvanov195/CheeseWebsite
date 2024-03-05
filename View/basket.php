@@ -23,11 +23,15 @@
             <?php if(!empty(getBasketItems())):?>
                 <?php foreach(getBasketItems() as $index => $item):?>
                 <div class = "card">
+                    <div class = "header">
+                        <h3><?= $item->cheese->name?></h3>
+                    </div>
+
                     <div class = "cardBody">
                     <!-- Instead of form AJAX can be used here -->
+                    
                         <form method="post" action ="basket_controller.php"> 
-                            <input value="<?=$index?>" name = "itemNumber">          
-                            <h3><?= $item->cheese->name?></h3>
+                            <input type = "hidden"value="<?=$index?>" name = "itemNumber">          
                             <p>Type: <?= $item->cheese->type?></p>
                             <p>Origin: <?= $item->cheese->origin?></p>
                             <p>Strength: <?= $item->cheese->strength?></p>
