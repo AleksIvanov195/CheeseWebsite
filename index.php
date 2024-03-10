@@ -19,16 +19,20 @@
             <div class = "filters">
             
                 <form method = "post" action = "mainPage_controller.php">
-                    <input name = "search" placeholder="Search for cheese">
-                    <input type = "submit" value = "Search"/>
-                        <br></br>
+                    <div class="searchContainer">
+                        <input name = "search" placeholder="Search for cheese">
+                        <input type = "submit" value = "Search"/>
+                    </div>
+                        
                         <p style = "margin-bottom: -40px; font-weight: bold">Cheese Type</p>
                         <br></br>
 
                         <?php foreach(array_unique($uniqueTypes) as $type):?>
                         <ul style = "margin-left: -30px; margin-bottom: -10px;">             
-                            <input type="checkbox" name="cheeseType[]" value="<?= $type?>"> 
-                            <label for="<?= $type?>"><?= $type?></label>  
+                            <label>
+                                <input type="checkbox" name="cheeseType[]" value="<?= $type?>"> 
+                                <?= $type?>
+                            </label>
                         </ul>
                         <?php endforeach?> 
 
@@ -38,8 +42,10 @@
 
                         <?php foreach(array_unique($uniqueOrigins) as $origin):?>
                         <ul style = "margin-left: -30px; margin-bottom: -10px">
-                        <input type="checkbox" name="cheeseOrigin[]" value="<?= $origin?> "> 
-                        <label for="<?= $origin?>"><?= $origin?></label>         
+                            <label>
+                                <input type="checkbox" name="cheeseOrigin[]" value="<?= $origin?> "> 
+                                <?= $origin?>
+                            </label>         
                         </ul>
                         <?php endforeach?>
 
@@ -49,16 +55,18 @@
 
                         <?php foreach(array_unique($uniqueStrengths) as $strength):?>
                         <ul style = "margin-left: -30px; margin-bottom: -10px">
-                        <input type="checkbox"name="cheeseStrength[]" value="<?= $strength?>"> 
-                        <label for="<?= $strength?>"><?= $strength?></label> 
+                            <label>
+                                <input type="checkbox"name="cheeseStrength[]" value="<?= $strength?>"> 
+                                <?= $strength?>
+                            </label> 
                         </ul> 
                         <?php endforeach?> 
                          
                         
                         <p style = "margin-bottom: -30px; font-weight: bold">Price per gram</p>
                         <br></br>
-                        <input type="text" name="minPrice" placeholder="Min Price" style="width: 30%;">
-                        <input type="text" name="maxPrice" placeholder="Max Price" style="width: 30%;">                 
+                        <input type = "number" name="minPrice" placeholder="Min Price" style="width: 30%;">
+                        <input type = "number" name="maxPrice" placeholder="Max Price" style="width: 30%;">                 
                 </form>
             </div>
 
@@ -78,8 +86,9 @@
                         
                             <p><form action="mainPage_controller.php">
                                 <input type ="hidden"name="cheeseId" value="<?= $cheese->id?>" />
+                                Weight in grams:
                                 <input name="weight" type = "number"  min="100" max="20000"/>
-                                <br></br>
+                                
                                 <input type="submit" value="Add to Basket" style="background-color:"/>
                                 </form></p>
                             </div>

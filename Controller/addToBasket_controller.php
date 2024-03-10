@@ -24,5 +24,10 @@
         
     }
 
+    function basketDeleteItem($index)
+    {
+        unset($_SESSION["basket"][$index]);
+    }
+
 
 ?>

@@ -55,35 +55,47 @@ main
   display:flex;
   flex-wrap:wrap;
 }
-.header{grid-area:H;}
-.cardBody{grid-area:B;}
+
 
 .card {
-    display:grid;
-    grid-template-columns:3fr 3fr;
-    grid-template-rows:auto;
-    width: 90%;
-    height: 200px;
-    margin: 10px;
-    border: 0.5px solid rgb(182, 181, 181);
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    grid-template-areas:
-    "H B "
+  width: 300px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+  margin-top: 20px; 
+  margin-right: 20px; 
+  margin-bottom: 20px; 
+  font-family: Arial, sans-serif;
+}
+.card .cardHeader 
+{
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  margin: 0;
+  font-size: 20px;
+}
+.card .cardBody 
+{
+  padding: 10px;
+}
+.card .cardBody .formButtons 
+{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.card .cardBody .formButtons button 
+{
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+}
+.card .cardBody .formButtons button:hover
+{
+  background-color: rgb(216, 216, 216);
+}
 
-    ;
-    
-  }
-  .card > .header
-  {
-   
-  }
 
-  .card > .cardBody
-  {
-    width: 90%;
-    height: 90%;
-  }
 
 
   

@@ -10,14 +10,14 @@ updateTotal();
 function updateTotal() 
 {
     let total = 0;
-    //Get all basket items as an array.
+    //Get all basket items as list.
     let items = document.getElementsByClassName("cardBody");
     //for each item
     for (let i = 0; i < items.length; i++) 
     {
-        //For the item, get it's weight and value
+        //For the item, get it's weight
         let weight = parseFloat(items[i].getElementsByClassName("weight")[0].value);
-        //For the item, get it's pricePerGram and value
+        //For the item, get it's pricePerGram
         let pricePerGram = parseFloat(items[i].getElementsByClassName("pricePerGram")[0].innerText);
         let totalPrice = weight * pricePerGram;
         //Item get it's totalPrice and change text to the new totalPrice
