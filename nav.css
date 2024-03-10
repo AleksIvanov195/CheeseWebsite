@@ -1,0 +1,41 @@
+html *
+{
+  font-family: arial;
+}
+body
+{
+  margin: 0;
+  padding: 0;
+  background-color: rgb(253, 253, 253);
+  
+}
+nav
+{
+  display: flex;
+  color: gray;
+  margin-bottom: 10px;
+  height: 60px;
+  size: 30px;
+  background-color: rgb(4, 4, 34);
+  fill: 100%;
+  margin-top: 0;
+  padding-top: 0;
+  align-items: center;
+  
+}
+nav > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-size: 23px;
+  text-decoration: none;
+  color: white;
+  height: 100%;
+  width: 100px;
+  transition: 0.3s;
+}
+nav > a:hover
+{
+  background-color: rgb(40, 40, 51);
+}
