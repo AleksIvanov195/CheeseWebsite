@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="../styles.css" />
     <link rel="stylesheet" type="text/css" href="../nav.css" />
     <script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="../filter.js"></script>
+    <script type="text/javascript" src="../Javascript_webservices/filterCheeses.js"></script>
     </head>
         <body>
             <nav>
