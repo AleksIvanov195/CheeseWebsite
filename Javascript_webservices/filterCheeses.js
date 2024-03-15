@@ -6,13 +6,6 @@ function initialisePage()
   $('input[type=checkbox]').change(ajaxGetFilteredCheeses);
 
 }
-function ajaxGetCheesesByName()
-{
-    
-    var name = $('input[name="search"]').val();
-    $.get("../WebServices/getFilteredCheese_service.php?search="+name, ajaxCallback);
-}
-
 function ajaxGetFilteredCheeses()
 {
     // Get all the selected filters
