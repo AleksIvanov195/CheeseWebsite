@@ -73,6 +73,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
     }
     function getCheeseByName($cheese)
     {
+
         global $pdo;
         $statement = $pdo->prepare("SELECT * FROM Cheese WHERE name = ?");
         $statement->execute([$cheese]);
@@ -119,6 +120,12 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
 
         if(!empty($types))//if the array is not empty
         {
+            //To not get the error:
+            //Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array in the JSON File
+            if(!is_array($types))
+            {
+                $types = explode(",", $types);
+            }
             $placeholders = str_repeat('?,', count($types) - 1) . '?'; //str_repeat concatenate "?," to the string, number of times in this case it is the size of $types array - 1, because otherwise another "," will be printed which will cause an error
             $query .= " AND type IN ($placeholders)"; //concatenate to the query the " AND type IN ($placeholders)" condition
             //the query will look like something like this if type has 3 values: SELECT * FROM Cheese WHERE 1=1 AND type IN(?, ?, ?)
@@ -136,6 +143,10 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
 
         if(!empty($origins))
         {
+            if(!is_array($origins))
+            {
+                $origins = explode(",", $origins);
+            }
             $placeholders = str_repeat('?,', count($origins) - 1) . '?';
             $query .= " AND origin IN ($placeholders)";
             //the query will look like something like this if origin has 2 values: SELECT * FROM Cheese WHERE 1=1 AND origin IN(?, ?)
@@ -151,6 +162,10 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         }
         if(!empty($strength))
         {
+            if(!is_array($strength))
+            {
+                $strength = explode(",", $strength);
+            }
             $placeholders = str_repeat('?,', count($strength) - 1) . '?';
             $query .= " AND strength IN ($placeholders)";
             

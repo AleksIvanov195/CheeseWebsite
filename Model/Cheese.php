@@ -1,5 +1,5 @@
 <?php
-class Cheese
+class Cheese implements JsonSerializable
 {
     private $id;
     private $name;
@@ -18,5 +18,9 @@ class Cheese
     {
         $this->$attribute = $value;
 
+    }
+    function jsonSerialize()
+    {
+        return get_object_vars($this);
     }
 }

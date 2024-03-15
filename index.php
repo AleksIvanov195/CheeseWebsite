@@ -4,6 +4,8 @@
     
     <link rel="stylesheet" type="text/css" href="../styles.css" />
     <link rel="stylesheet" type="text/css" href="../nav.css" />
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../filter.js"></script>
     </head>
         <body>
             <nav>
@@ -20,10 +22,10 @@
             </nav>
             <div class = "filters">
             
-                <form method = "post" action = "mainPage_controller.php">
+                
                     <div class="searchContainer">
                         <input name = "search" placeholder="Search for cheese">
-                        <input type = "submit" value = "Search"/>
+                        <input id = "searchButton" type = "submit" value = "Search"/>
                     </div>
                         
                         <p style = "margin-bottom: -40px; font-weight: bold">Cheese Type</p>
@@ -69,7 +71,7 @@
                         <br></br>
                         <input type = "number" name="minPrice" placeholder="Min Price" style="width: 30%;">
                         <input type = "number" name="maxPrice" placeholder="Max Price" style="width: 30%;">                 
-                </form>
+                
             </div>
 
             <main>
