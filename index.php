@@ -5,8 +5,9 @@
     <link rel="stylesheet" type="text/css" href="../Css/styles.css" />
     <link rel="stylesheet" type="text/css" href="../Css/nav.css" />
     <script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="../Javascript_webservices/filterCheeses.js"></script>
     <script type="text/javascript" src="../Javascript_webservices/addToBasket.js"></script>
+    <script type="text/javascript" src="../Javascript_webservices/filterCheeses.js"></script>
+    
     </head>
         <body>
             <nav>
@@ -71,7 +72,8 @@
                         <p style = "margin-bottom: -30px; font-weight: bold">Price per gram</p>
                         <br></br>
                         <input type = "number" name="minPrice" placeholder="Min Price" style="width: 30%;">
-                        <input type = "number" name="maxPrice" placeholder="Max Price" style="width: 30%;">                 
+                        <input type = "number" name="maxPrice" placeholder="Max Price" style="width: 30%;">
+                        <input id = "searchButton" type = "submit" value = "Go"/>                 
                 
             </div>
 
@@ -94,7 +96,7 @@
                                 Weight in grams:
                                 <input id = "weight<?= $cheese->id?>" name="weight" type = "number"  min="100" max="20000"/>
                                 
-                                <input id="<?= $cheese->id?>" name = "addToBasket" type="submit" value="Add to Basket" style="background-color:"/>
+                                <input id="<?= $cheese->id?>" name = "addToBasket" type="submit" value="Add to Basket"/>
                                 </p>
                             </div>
                         </div>  

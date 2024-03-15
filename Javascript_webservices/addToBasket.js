@@ -3,7 +3,6 @@ function initialisePage()
 {
   $('input[name="addToBasket"]').click(ajaxAddToBasket);
 }
-
 function ajaxAddToBasket()
 {
     //The clicked button ID is the ID of the cheese inside the card, where the button is clicked.
@@ -12,12 +11,13 @@ function ajaxAddToBasket()
     //Therefore I can use the ID of the input button to get the correct cheese and add it to the basket.
     var id = $('#id' + cheeseId).val();
     var weight = $('#weight' + cheeseId).val();   
-    $.get("../WebServices/addToBasket_service.php?id=" + id + "&weight=" + weight, ajaxCallback);
+    $.get("../WebServices/addToBasket_service.php?id=" + id + "&weight=" + weight, ajaxAddToBasketCallBack);
 }
 
 
-function ajaxCallback(result)
+function ajaxAddToBasketCallBack(result)
 {
     console.log(result);
+    console.log("Added");
 }
 

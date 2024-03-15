@@ -4,6 +4,7 @@ function initialisePage()
 {
   $("input#searchButton").click(ajaxGetFilteredCheeses);
   $('input[type=checkbox]').change(ajaxGetFilteredCheeses);
+  
 
 }
 function ajaxGetFilteredCheeses()
@@ -17,10 +18,10 @@ function ajaxGetFilteredCheeses()
     var strength = $('input[name="cheeseStrength[]"]:checked').map(function() { return this.value; }).get();
     var minPrice = $('input[name="minPrice"]').val();
     var maxPrice = $('input[name="maxPrice"]').val();
-    $.get("../WebServices/getFilteredCheese_service.php?search="+name+"&cheeseType="+types+"&cheeseOrigin="+origins+"&cheeseStrength="+strength+"&minPrice="+minPrice+"&maxPrice="+maxPrice, ajaxCallback);
+    $.get("../WebServices/getFilteredCheese_service.php?search="+name+"&cheeseType="+types+"&cheeseOrigin="+origins+"&cheeseStrength="+strength+"&minPrice="+minPrice+"&maxPrice="+maxPrice, ajaxFilterCallback);
 
 }
-function ajaxCallback(results)
+function ajaxFilterCallback(results)
 {
     console.log(results);
     $("main").empty();
@@ -35,15 +36,26 @@ function ajaxCallback(results)
         {
         var cheese = results[i];
         //$("div#results").append(cheese.name);
-        var card = '<div class="card"><div class="cardBody"><h3>' + 
-            cheese.name + '</h3><p>Type: ' + 
-            cheese.type + '</p><p>Origin: ' + 
-            cheese.origin + '</p><p>Strength: ' + 
-            cheese.strength + '</p><p>Price: £' + 
-            cheese.pricePerGram + 
-            '/g</p><p><form action="mainPage_controller.php"><input type="hidden" name="cheeseId" value="' + cheese.id + 
-            '" />Weight in grams:<input name="weight" type="number" min="100" max="20000" /><input type="submit" value="Add to Basket" style="background-color:"/></form></p></div></div>';
-            $("main").append(card);
+        var cheeseCard = '<div class = "card">' +
+                    '<div class = "cardBody">' +
+                        '<h3>' + cheese.name + '</h3>' +
+                        '<p>Type: ' + cheese.type + '</p>' +
+                        '<p>Origin: ' + cheese.origin + '</p>' +
+                        '<p>Strength: ' + cheese.strength + '</p>' +
+                        '<p>Price: £' + cheese.pricePerGram + '/g</p>' +
+                        '<p>' +
+                            '<input id ="id' + cheese.id + '" type ="hidden" name="cheeseId" value="' + cheese.id + '" />' +
+                            'Weight in grams:' +
+                            '<input id = "weight' + cheese.id + '" name="weight" type = "number"  min="100" max="20000"/>' +
+                            '<input id="' + cheese.id + '" name = "addToBasket" type="submit" value="Add to Basket"/>' +
+                        '</p>' +
+                    '</div>' +
+                '</div>';
+
+            $("main").append(cheeseCard);
+            
         }
+        //So addtobasket button can be used after filtering
+        $('input[name="addToBasket"]').click(ajaxAddToBasket);
     }
 }
