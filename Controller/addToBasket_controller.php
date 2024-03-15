@@ -8,10 +8,10 @@
         session_start();
     }
     //Add to basket
-    function addToBasket($cheeseId, $weigth) 
+    function addToBasket($cheeseId, $weight) 
     {
         $cheese = getCheeseById($cheeseId); 
-        $item = new OrderedItem($cheese, $weigth);   
+        $item = new OrderedItem($cheese, $weight);   
         $_SESSION["basket"][] = $item;       
     }
     //Get basket items from the session

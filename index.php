@@ -2,10 +2,11 @@
 <html>
     <head>
     
-    <link rel="stylesheet" type="text/css" href="../styles.css" />
-    <link rel="stylesheet" type="text/css" href="../nav.css" />
+    <link rel="stylesheet" type="text/css" href="../Css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../Css/nav.css" />
     <script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../Javascript_webservices/filterCheeses.js"></script>
+    <script type="text/javascript" src="../Javascript_webservices/addToBasket.js"></script>
     </head>
         <body>
             <nav>
@@ -88,13 +89,13 @@
                             <p>Strength: <?= $cheese->strength?></p>
                             <p>Price: £<?= $cheese->pricePerGram?>/g</p>
                         
-                            <p><form action="mainPage_controller.php">
-                                <input type ="hidden"name="cheeseId" value="<?= $cheese->id?>" />
+                            <p>
+                                <input id ="id<?= $cheese->id?>" type ="hidden" name="cheeseId" value="<?= $cheese->id?>" />
                                 Weight in grams:
-                                <input name="weight" type = "number"  min="100" max="20000"/>
+                                <input id = "weight<?= $cheese->id?>" name="weight" type = "number"  min="100" max="20000"/>
                                 
-                                <input type="submit" value="Add to Basket" style="background-color:"/>
-                                </form></p>
+                                <input id="<?= $cheese->id?>" name = "addToBasket" type="submit" value="Add to Basket" style="background-color:"/>
+                                </p>
                             </div>
                         </div>  
                 <?php endforeach ?>
