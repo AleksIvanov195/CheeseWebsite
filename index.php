@@ -19,7 +19,7 @@
                     <?php else:?>
                         <a>Hi, <?=$_SESSION["Username"] ?></a>
                     <?php endif?>   
-                    <a href="basket_controller.php">Basket</a>
+                    <a id ="basket" href="basket_controller.php">Basket</a>
                 
             </nav>
             <div class = "filters">

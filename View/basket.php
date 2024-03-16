@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
     <head>
-    <link rel="stylesheet" type="text/css" href="../basket.css" />
-    <link rel="stylesheet" type="text/css" href="../nav.css" />
+    <link rel="stylesheet" type="text/css" href="../Css/basket.css" />
+    <link rel="stylesheet" type="text/css" href="../Css/nav.css" />
     
     </head>
         <body>

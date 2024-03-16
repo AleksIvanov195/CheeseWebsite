@@ -17,7 +17,12 @@ function ajaxAddToBasket()
 
 function ajaxAddToBasketCallBack(result)
 {
-    console.log(result);
     console.log("Added");
+    updateBasketSize(result);
+}
+
+function updateBasketSize(result)
+{
+  $("#basket").text('Basket Size: ' + result);
 }
 
