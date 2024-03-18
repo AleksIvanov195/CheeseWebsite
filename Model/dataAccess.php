@@ -47,12 +47,30 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         $statement = $pdo->prepare("INSERT INTO Customer (personId, registeredDate) VALUES (?, ?)");
         $statement->execute([$personId, date('Y-m-d')]);                                 
     }
-    function getCustomer($username, $password)
+    function getCustomer($id)
+    {
+        global $pdo;
+        $statement = $pdo->prepare("SELECT * FROM customer, person WHERE customer.personId = person.id AND person.id = ?");
+        $statement->execute([$id]);
+        $statement->setFetchMode(PDO::FETCH_CLASS, 'Customer');
+        $user = $statement->fetch();
+        return $user;
+    }
+    function getManager($id)
+    {
+        global $pdo;
+        $statement = $pdo->prepare("SELECT * FROM manager WHERE personId = ?");
+        $statement->execute([$id]);
+        $statement->setFetchMode(PDO::FETCH_CLASS, 'Manager');
+        $user = $statement->fetch();
+        return $user;
+    }
+    function getPerson($username, $password)
     {
         global $pdo;
         $statement = $pdo->prepare("SELECT * FROM Person WHERE firstName = ?");
         $statement->execute([$username]);
-        $statement->setFetchMode(PDO::FETCH_CLASS, 'Customer');
+        $statement->setFetchMode(PDO::FETCH_CLASS, 'Person');
         $user = $statement->fetch();
         if ($user && password_verify($password, $user->password)) {
             // Password is correct
@@ -62,6 +80,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
             return null;
         }
     }
+
     function getAllCheeses()
     {
         global $pdo;

@@ -16,19 +16,19 @@ nav
   margin-bottom: 10px;
   height: 60px;
   size: 30px;
-  background-color: rgb(4, 4, 34);
+ background-color: rgb(4, 4, 34);
   fill: 100%;
   margin-top: 0;
   padding-top: 0;
   align-items: center;
-  
+  justify-content: space-between;
 }
 nav > a {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 10px;
-  font-size: 23px;
+  font-size: 20px;
   text-decoration: none;
   color: white;
   height: 100%;
@@ -38,4 +38,8 @@ nav > a {
 nav > a:hover
 {
   background-color: rgb(40, 40, 51);
+  transition: background-color 0.3s ease;
 }
+
+
+

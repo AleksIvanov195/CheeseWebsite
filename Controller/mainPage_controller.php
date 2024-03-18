@@ -1,6 +1,8 @@
 <?php
     
     require_once "../Model/Cheese.php";
+    require_once "../Model/Person.php";
+    require_once "../Model/Customer.php";
     require_once "../Model/dataAccess.php";
     require_once "addToBasket_controller.php";
     if(session_status() == PHP_SESSION_NONE)

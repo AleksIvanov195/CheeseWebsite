@@ -11,16 +11,17 @@
     </head>
         <body>
             <nav>
-                    <a href="mainPage_controller.php">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#contact">Contact</a>
-                    <?php if (empty($_SESSION["Username"])):?>
-                        <a href ="login_controller.php">Hi, Log in</a>
+                    <a href="mainPage_controller.php">Home</a>            
+                    <?php if (empty($_SESSION["user"])):?>
+                        <a href ="login_controller.php">Log in</a>
                     <?php else:?>
-                        <a>Hi, <?=$_SESSION["Username"] ?></a>
+                        <a>Hello, <?=$_SESSION["user"]->firstName ?></a>
+                        <?php if ($_SESSION["user"]->role == "Manager"):?>
+                            <a>ADMIN</a>
+                        <?php endif?>
                     <?php endif?>   
                     <a id ="basket" href="basket_controller.php">Basket</a>
-                
+                    
             </nav>
             <div class = "filters">
             

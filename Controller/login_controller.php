@@ -10,8 +10,9 @@
 
     if(!empty($_REQUEST["username"]) && !empty($_REQUEST["password"]))
     {
-        $results = getCustomer($_REQUEST["username"], $_REQUEST["password"]);
-        $_SESSION["Username"] = $results->firstName;
+        $results = getPerson($_REQUEST["username"], $_REQUEST["password"]);
+        $_SESSION["user"] = $results;
+
         header("Location: mainPage_controller.php");
     }
 

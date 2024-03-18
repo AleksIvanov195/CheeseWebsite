@@ -23,6 +23,6 @@ function ajaxAddToBasketCallBack(result)
 
 function updateBasketSize(result)
 {
-  $("#basket").text('Basket Size: ' + result);
+  $("#basket").text('Basket ('+result.replace(/ /g,'')+')');
 }
 
