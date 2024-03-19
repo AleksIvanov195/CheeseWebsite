@@ -12,13 +12,9 @@
         </form>
         <a href="register_controller.php">No account? Register now!</a>
 
-        <?php if(!empty($results)):?>
-            
-                <p><?= $results->firstName?></p>
-                <p><?= $results->lastName?></p>
-                <p><?= $results->address?></p>
-                
-                <?php endif?>
+        <?php if(!empty($errorMessage)):?>     
+                <p><?= $errorMessage?></p>            
+        <?php endif?>
 
     </body>
     </html>

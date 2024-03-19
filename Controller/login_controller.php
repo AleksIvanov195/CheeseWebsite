@@ -1,7 +1,8 @@
 <?php
-    require_once "../Model/dataAccess.php";
     require_once "../Model/Person.php";
     require_once "../Model/Customer.php";
+    require_once "../Model/Manager.php";
+    require_once "../Model/dataAccess.php";
     if(session_status() == PHP_SESSION_NONE)
     {
         // session has not started
@@ -11,9 +12,16 @@
     if(!empty($_REQUEST["username"]) && !empty($_REQUEST["password"]))
     {
         $results = getPerson($_REQUEST["username"], $_REQUEST["password"]);
-        $_SESSION["user"] = $results;
+        if(empty($results))
+        {
+            $errorMessage = "Wrong username or password, please try again.";
+        }
+        else
+        {
+            $_SESSION["user"] = $results;
+            header("Location: mainPage_controller.php");
+        }
 
-        header("Location: mainPage_controller.php");
     }
 
 

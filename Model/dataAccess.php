@@ -59,7 +59,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
     function getManager($id)
     {
         global $pdo;
-        $statement = $pdo->prepare("SELECT * FROM manager WHERE personId = ?");
+        $statement = $pdo->prepare("SELECT * FROM Manager WHERE personId = ?");
         $statement->execute([$id]);
         $statement->setFetchMode(PDO::FETCH_CLASS, 'Manager');
         $user = $statement->fetch();
@@ -72,11 +72,30 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         $statement->execute([$username]);
         $statement->setFetchMode(PDO::FETCH_CLASS, 'Person');
         $user = $statement->fetch();
-        if ($user && password_verify($password, $user->password)) {
-            // Password is correct
-            return $user;
-        } else {
-            // Invalid username or password
+        //Password valid
+        if ($user && password_verify($password, $user->password)) 
+        {
+            //Get manager info
+            if ($user->role == "Manager")
+            {
+                $managerInfo = getManager($user->id);
+                $m = new Manager();
+                $m->setInfo($managerInfo, $user);
+                return $m;       
+            }
+            //Get customer info
+            else if($user->role == "Customer")
+            {
+                $customerInfo = getCustomer($user->id);
+                $c = new Customer();
+                $c->setInfo($customerInfo, $user);
+                return $c;   
+            }
+            
+        }  
+        //Wrong password  
+        else 
+        {
             return null;
         }
     }

@@ -1,9 +1,9 @@
 <!doctype html>
 <html>
     <head>
-    
-    <link rel="stylesheet" type="text/css" href="../Css/styles.css" />
     <link rel="stylesheet" type="text/css" href="../Css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="../Css/styles.css" />
+
     <script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../Javascript_webservices/addToBasket.js"></script>
     <script type="text/javascript" src="../Javascript_webservices/filterCheeses.js"></script>
@@ -24,8 +24,7 @@
                     
             </nav>
             <div class = "filters">
-            
-                
+          
                     <div class="searchContainer">
                         <input name = "search" placeholder="Search for cheese">
                         <input id = "searchButton" type = "submit" value = "Search"/>

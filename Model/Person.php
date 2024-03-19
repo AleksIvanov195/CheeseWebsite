@@ -2,25 +2,30 @@
 
   class Person
  {
-    private $id;
-    private $firstName;
-    private $lastName;
-    private $email;
-    private $address;
-    private $contactNumber;
-    private $password;
-    
+    protected $id;
+    protected $firstName;
+    protected $lastName;
+    protected $email;
+    protected $address;
+    protected $contactNumber;
+    protected $password;
+    protected $role;
     
 
-    function __get($attribute) 
+
+    public function __get($attribute) 
     {
         return $this->$attribute;
     }
 
-    function __set($attribute, $value) 
+    public function __set($attribute, $value) 
     {
         $this->$attribute = $value;
     } 
+    public function setInfo($parameterOne, $parameterTwo)
+    {
+
+    }
 
  }
 
