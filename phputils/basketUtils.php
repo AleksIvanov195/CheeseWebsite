@@ -1,4 +1,8 @@
 <?php
+    if(session_status() == PHP_SESSION_NONE)
+    {
+        session_start();
+    }
     //Add to basket
     function addToBasket($cheeseId, $weight) 
     {
