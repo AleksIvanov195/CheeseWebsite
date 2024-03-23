@@ -34,7 +34,6 @@
                     </div>
                     
                         <div class = "cardBody">
-                        <!-- Instead of form AJAX can be used here -->  
                             <form method="post" action ="basket_controller.php"> 
                                 <!-- Item number tells me where the item is stored in the basket array -->
                                 <input type = "hidden"value="<?=$index?>" name = "itemNumber">          
@@ -47,7 +46,7 @@
                                     <p>Total Price: £<span name = "totalPrice"class = "totalPrice" ><?= $item->totalPrice?></span></p>
                                 </div>
                                 <div class = "formButtons">
-                                    <button type ="submit" name = "update">update</button>
+                                    <button type ="submit" name = "update">Update weight</button>
                                     <button type ="submit" name ="delete">Remove Item</button>
                                 </div>
                             </form>
@@ -62,11 +61,11 @@
             </main>
 
         <div class="purchaseCard">
-            <p>Total price: £<span id ="total">0.00</span></p>
+            <h2>Total price: £<span id ="total">0.00</span></h2>
             <script src="../basket.js"></script>
-            <form method="post" action ="../View/placeOrder_view.php"> 
-                <input type ="submit" name = "placeOrder">Place Order</button>
-                </form>
+            <form method="post" action ="../Controller/placeOrder_controller.php"> 
+                <input type ="submit" name = "placeOrder" value ="Place Order"/>
+            </form>
              
 
         </div>

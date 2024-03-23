@@ -2,7 +2,6 @@
     header('Content-Type: application/json');
     require_once "../Model/Cheese.php";
     require_once "../Model/dataAccess.php";
-    require_once "../Controller/addToBasket_controller.php";
     $types = array();
     $origins = array();
     $name = $types = $origins = $strength = "";

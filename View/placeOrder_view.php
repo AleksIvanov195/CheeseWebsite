@@ -5,6 +5,7 @@
 
 
     <body>
+        <p> MEOW: <?= $total?></p>
     <form method="post" action ="#theview"> 
         Address
         <input></input>

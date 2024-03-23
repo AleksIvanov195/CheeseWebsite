@@ -10,7 +10,7 @@ class OrderedItem
     {
         $this->cheese = $cheese;
         $this->weight = $weight;
-        $this->totalPrice = number_format($weight * $cheese->pricePerGram, 2, '.');
+        $this->totalPrice = number_format($weight * $cheese->pricePerGram, 2, '.', '');
         
         
     }

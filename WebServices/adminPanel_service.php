@@ -1,7 +1,7 @@
 <?php
     
     require_once "../Model/Cheese.php";
-    require_once "../Model/DataAccess.php";
+    require_once "../Model/dataAccess.php";
 
     if($_REQUEST["action"] == "add" && isset($_REQUEST["cheeseName"]) && isset($_REQUEST["cheeseType"]) && isset($_REQUEST["cheeseOrigin"]) && isset($_REQUEST["cheeseStrength"]) && isset($_REQUEST["cheesePrice"]))
     {

@@ -11,10 +11,12 @@ body
     grid-template-rows:auto;
     grid-template-areas:
     "N N N N"
-    ". . . C"
+    ". . . ."
     ". M M C"
     ". M M C"
+    
     ;
+    background-color: #f0ece2; 
 }
 main
 {
@@ -22,43 +24,53 @@ main
   flex-wrap:wrap;
 }
 
-
-.card {
+.card 
+{
   width: 300px;
-  border: 1px solid #ccc;
+  border:0.5px solid #B6B5B5;
+  background-color:#dfd3c3; 
   box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
   margin-top: 20px; 
   margin-right: 20px; 
   margin-bottom: 20px; 
-  font-family: Arial, sans-serif;
 }
-.card .cardHeader 
+.cardHeader 
 {
-  background-color: #f8f8f8;
+  background-color: #E6E5E4;
   padding: 10px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #C0BBBB;;
   margin: 0;
   font-size: 20px;
+  text-align: center;
 }
-.card .cardBody 
+.cardBody 
 {
   padding: 10px;
 }
-.card .cardBody .formButtons 
+.formButtons 
 {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
 }
-.card .cardBody .formButtons button 
+.formButtons button
 {
+  margin-top: 10px;
   padding: 5px 10px;
   border: none;
+  background-color: #596e79;
+  color: white;
+  transition: background-color 0.3s ease;
   border-radius: 5px;
 }
-.card .cardBody .formButtons button:hover
+.formButtons button:hover
 {
-  background-color: rgb(216, 216, 216);
+  background-color: #696969;
+}
+.purchaseCard
+{
+  text-align: center;
+  
 }
 
 
