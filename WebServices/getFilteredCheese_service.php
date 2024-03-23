@@ -55,5 +55,6 @@
         $results = getFilteredCheeses($name,$types, $origins, $strength, $priceRange); //then get the cheeses based on the selected filters and name 
         //Cheese class implements JsonSerializable, each php object cheese is converted into JSON
         echo json_encode($results);
+        
     }
 ?>

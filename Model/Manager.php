@@ -20,7 +20,7 @@
         #[Override]
         public function setInfo($managerInfo, $personInfo)
         {
-            $this->managerId = $managerInfo->id;
+            $this->managerId = $managerInfo->managerId;
             $this->salary = $managerInfo->salary;
             $this->department = $managerInfo->department;
             $this->startDate = $managerInfo->startDate;

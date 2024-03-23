@@ -17,7 +17,7 @@
                     <?php else:?>
                         <a>Hello, <?=$_SESSION["user"]->firstName ?></a>
                         <?php if ($_SESSION["user"]->role == "Manager"):?>
-                            <a>ADMIN</a>
+                            <a href ="adminPanel_controller.php">ADMIN</a>
                         <?php endif?>
                     <?php endif?>   
                     <a id ="basket" href="basket_controller.php">Basket</a>

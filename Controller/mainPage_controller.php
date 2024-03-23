@@ -8,15 +8,15 @@
     require_once "addToBasket_controller.php";
     if(session_status() == PHP_SESSION_NONE)
     {
-        // session has not started
         session_start();
     }
+    
 
-    $allCheeses = getAllCheeses(); // I am using this variable in the html to creater filters for each cheese. It is more efficient to just store all the cheeses in a variable and then use it whenever i need it.
+    $allCheeses = getAllCheeses(); 
     $types = array();
     $origins = array();
     $name = $types = $origins = $strength = "";
-    $priceRange = array(0.001,1000); //make sure there is always a valid range for min and max price per gram (filters)
+    $priceRange = array(0.001,1000); //Make sure there is always a valid range for min and max price per gram (filters)
 
 
     if(empty($_REQUEST["weight"])) 
@@ -30,9 +30,9 @@
     }
 
     //print_r(getBasketItems());
-    $basketItems = getBasketItems();
+    //$basketItems = getBasketItems();
     
-    
+    //Filters
     foreach($allCheeses as $cheese)
     {
         $uniqueTypes[] = $cheese->type;
@@ -40,7 +40,7 @@
         $uniqueStrengths[] = $cheese->strength;
         sort($uniqueStrengths);
     }
-
+    
     if(isset($_REQUEST["search"])) //if user entered a name
     {
         $name = $_REQUEST["search"]; //get the entered name

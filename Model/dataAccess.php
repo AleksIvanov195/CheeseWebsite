@@ -99,7 +99,12 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
             return null;
         }
     }
-
+    function addNewCheese($cheeseObject)
+    {
+        global $pdo;
+        $statement = $pdo->prepare("INSERT INTO Cheese (name, type , origin, strength, pricePerGram) VALUES(?,?,?,?,?)");
+        $statement->execute([$cheeseObject->name, $cheeseObject ->type, $cheeseObject->origin, $cheeseObject->strength, $cheeseObject->pricePerGram]);
+    }
     function getAllCheeses()
     {
         global $pdo;
@@ -109,33 +114,6 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         return $results;
 
     }
-    function getCheeseByName($cheese)
-    {
-
-        global $pdo;
-        $statement = $pdo->prepare("SELECT * FROM Cheese WHERE name = ?");
-        $statement->execute([$cheese]);
-        $results = $statement->fetchAll(PDO::FETCH_CLASS,"Cheese");
-        return $results;
-
-    }
-
-    function getCheeseByType($type)
-    {
-        global $pdo;
-        $statement = $pdo->prepare("SELECT * FROM Cheese WHERE type = ?");
-        $statement->execute([$type]);
-        $results = $statement->fetchAll(PDO::FETCH_CLASS,"Cheese");
-        return $results;        
-    }
-    function getCheeseByOrigin($origin)
-    {
-        global $pdo;
-        $statement = $pdo->prepare("SELECT * FROM Cheese WHERE origin = ?");
-        $statement->execute([$origin]);
-        $results = $statement->fetchAll(PDO::FETCH_CLASS,"Cheese");
-        return $results;        
-    }
     function getCheeseById($id)
     {
         global $pdo;
@@ -143,6 +121,36 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         $statement->execute([$id]);
         $result = $statement->fetchObject("Cheese"); //will fetch only 1 cheese matching the id
         return $result;        
+    }
+    function getCheeseByName($name)
+    {
+        global $pdo;
+        $statement = $pdo->prepare("SELECT * FROM Cheese WHERE name = ?");
+        $statement->execute([$name]);
+        $result = $statement->fetchObject("Cheese"); //will fetch only 1 cheese matching the name
+        return $result;        
+    }
+    function updateCheese($cheeseObject)
+    {
+        global $pdo;
+        $statement = $pdo->prepare("UPDATE Cheese SET name = ?, type = ?, origin = ?, strength = ?, pricePerGram = ? WHERE id = ?");
+        $statement->execute([$cheeseObject->name, $cheeseObject ->type, $cheeseObject->origin, $cheeseObject->strength, $cheeseObject->pricePerGram, $cheeseObject->id,]);
+    }
+    function deleteCheese($id)
+    {
+        $cheese = getCheeseByid($id);
+        if(!empty($cheese))
+        {
+            global $pdo;
+            $statement = $pdo->prepare("DELETE FROM Cheese WHERE id = ?");
+            $statement->execute([$id]);
+            return "Success!".$cheese->name. " with id " .$id." has been deleted.";
+        }
+        else
+        {
+            return "Cheese with this id doesn't exist";
+        }
+
     }
     function getFilteredCheeses($name,$types, $origins, $strength, $priceRange)
     {

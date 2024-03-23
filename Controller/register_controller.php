@@ -6,7 +6,8 @@
     !empty($_REQUEST["email"]) && !empty($_REQUEST["address"]) 
         && !empty($_REQUEST["phoneNumber"]) && !empty($_REQUEST["password"]))
     {
-        registerCustomer($_REQUEST["firstName"], $_REQUEST["lastName"], $_REQUEST["email"], $_REQUEST["address"], $_REQUEST["phoneNumber"], $_REQUEST["password"]);
+        registerCustomer(htmlentities($_REQUEST["firstName"]), htmlentities($_REQUEST["lastName"]), 
+        htmlentities($_REQUEST["email"]), htmlentities($_REQUEST["address"]), htmlentities($_REQUEST["phoneNumber"]), htmlentities($_REQUEST["password"]));
         $status = "Customer has been added";
     }
     else

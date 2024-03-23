@@ -9,7 +9,7 @@
     }
 if(isset($_REQUEST["id"]) && isset($_REQUEST["weight"]))
 {
-    $cheese = getCheeseById($_REQUEST["id"]);
+    $cheese = getCheeseById(htmlentities($_REQUEST["id"]));
     $item = new OrderedItem($cheese, (int)$_REQUEST["weight"]); 
     $_SESSION["basket"][] = $item;
     echo count($_SESSION["basket"]);

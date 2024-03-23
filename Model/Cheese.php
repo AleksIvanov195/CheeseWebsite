@@ -19,6 +19,15 @@ class Cheese implements JsonSerializable
         $this->$attribute = $value;
 
     }
+    function setCheeseDetails($id, $name, $type, $origin, $strength, $pricePerGram)
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->type = $type;
+        $this->origin=$origin;
+        $this->strength=$strength;
+        $this->pricePerGram=$pricePerGram;
+    }
     function jsonSerialize()
     {
         return get_object_vars($this);
