@@ -1,12 +1,4 @@
 <?php
-    require_once "../Model/Cheese.php";
-    require_once "../Model/dataAccess.php";
-    require_once "../Model/OrderedItem.php";
-    if(session_status() == PHP_SESSION_NONE)
-    {
-        // session has not started
-        session_start();
-    }
     //Add to basket
     function addToBasket($cheeseId, $weight) 
     {
@@ -22,6 +14,10 @@
             return $_SESSION["basket"];
         }
         
+    }
+    function getItemCount()
+    {
+        return count($_SESSION["basket"]);
     }
 
     function basketDeleteItem($index)

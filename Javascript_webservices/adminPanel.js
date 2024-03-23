@@ -102,7 +102,7 @@ function ajaxDeleteCheeseCallBack(result)
     //console.log(result);
     $("p#deletionMessage").text(result);
     $("p#deletionMessage").css({"display": "block", "color": "green"});
-    $("input#cheeseNameDelete").val("");
+    $("input#cheeseIdDelete").val("");
 }
 function ajaxGetCheeseCallBack(result)
 {
@@ -117,7 +117,7 @@ function ajaxGetCheeseCallBack(result)
 }
 function ajaxUpdateCheeseCallBack(result)
 {
-  alert("Cheese succesfully updated!")
+  alert("Cheese succesfully updated!");
 }
 
 

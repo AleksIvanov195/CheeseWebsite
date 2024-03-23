@@ -5,7 +5,7 @@
     require_once "../Model/Customer.php";
     require_once "../Model/Manager.php";
     require_once "../Model/dataAccess.php";
-    require_once "addToBasket_controller.php";
+   // require_once "addToBasket_controller.php";
     if(session_status() == PHP_SESSION_NONE)
     {
         session_start();
@@ -18,7 +18,7 @@
     $name = $types = $origins = $strength = "";
     $priceRange = array(0.001,1000); //Make sure there is always a valid range for min and max price per gram (filters)
 
-
+/*
     if(empty($_REQUEST["weight"])) 
     {   
         //status = please enter valid weigth e.g. 1.5
@@ -31,7 +31,7 @@
 
     //print_r(getBasketItems());
     //$basketItems = getBasketItems();
-    
+    */
     //Filters
     foreach($allCheeses as $cheese)
     {

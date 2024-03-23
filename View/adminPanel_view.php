@@ -18,6 +18,7 @@
                 <h2>Admin Details</h2>
                 <p>ID: <?= $_SESSION["user"]->managerId?></p>
                 <p>Name: <?= $_SESSION["user"]->firstName?></p>
+                <a href = "mainPage_controller.php"> Back to home </a>
             </section>
             <section>        
                     <h3>Add New Cheese</h3>

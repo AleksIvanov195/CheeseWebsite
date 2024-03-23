@@ -7,6 +7,7 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../Javascript_webservices/addToBasket.js"></script>
     <script type="text/javascript" src="../Javascript_webservices/filterCheeses.js"></script>
+    <script type="text/javascript" src="../mainPage.js"></script>
     
     </head>
         <body>
@@ -17,11 +18,14 @@
                     <?php else:?>
                         <a>Hello, <?=$_SESSION["user"]->firstName ?></a>
                         <?php if ($_SESSION["user"]->role == "Manager"):?>
-                            <a href ="adminPanel_controller.php">ADMIN</a>
+                            <a href ="adminPanel_controller.php">Admin Panel</a>
                         <?php endif?>
                     <?php endif?>   
-                    <a id ="basket" href="basket_controller.php">Basket</a>
-                    
+                    <?php if(!empty($_SESSION["basket"])):?>
+                        <a id ="basket" href="basket_controller.php">Basket (<?= count($_SESSION["basket"])?>)</a>
+                    <?php else:?>
+                        <a id ="basket" href="basket_controller.php">Basket</a>
+                    <?php endif?>
             </nav>
             <div class = "filters">
           
@@ -94,7 +98,7 @@
                             <p>
                                 <input id ="id<?= $cheese->id?>" type ="hidden" name="cheeseId" value="<?= $cheese->id?>" />
                                 Weight in grams:
-                                <input id = "weight<?= $cheese->id?>" name="weight" type = "number"  min="100" max="20000"/>
+                                <input id = "weight<?= $cheese->id?>" name="weight" type = "number"  min="100" max="20000" placeholder="min:100g"/>
                                 
                                 <input id="<?= $cheese->id?>" name = "addToBasket" type="submit" value="Add to Basket"/>
                                 </p>
