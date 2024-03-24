@@ -6,7 +6,7 @@
     <body>
         <form method = "post" action = "login_controller.php">
             
-            <input name = "username" placeholder="Username">
+            <input name = "email" placeholder="Email">
             <input name = "password" placeholder="Password">
             <input type = "submit" value = "Search"/>
         </form>

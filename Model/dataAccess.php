@@ -65,11 +65,11 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         $user = $statement->fetch();
         return $user;
     }
-    function getPerson($username, $password)
+    function getPerson($email, $password)
     {
         global $pdo;
-        $statement = $pdo->prepare("SELECT * FROM Person WHERE firstName = ?");
-        $statement->execute([$username]);
+        $statement = $pdo->prepare("SELECT * FROM Person WHERE email = ?");
+        $statement->execute([$email]);
         $statement->setFetchMode(PDO::FETCH_CLASS, 'Person');
         $user = $statement->fetch();
         //Password valid
@@ -138,19 +138,18 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
     }
     function deleteCheese($id)
     {
-        $cheese = getCheeseByid($id);
-        if(!empty($cheese))
+        global $pdo;
+        $statement = $pdo->prepare("DELETE FROM Cheese WHERE id = ?");
+        $statement->execute([$id]);
+        // Check if a row was deleted (cheese was deleted)
+        if ($statement->rowCount() > 0) 
         {
-            global $pdo;
-            $statement = $pdo->prepare("DELETE FROM Cheese WHERE id = ?");
-            $statement->execute([$id]);
-            return "Success!".$cheese->name. " with id " .$id." has been deleted.";
-        }
-        else
+            return "Success! Cheese with ID " . $id . " has been deleted.";
+        } 
+        else 
         {
-            return "Cheese with this id doesn't exist";
+            return "Cheese with this ID doesn't exist";
         }
-
     }
     function getFilteredCheeses($name,$types, $origins, $strength, $priceRange)
     {
@@ -243,5 +242,10 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         $statement->execute($params);//it will execute query with these hard,soft,blue,england,USA replacing the question marks
         $results = $statement->fetchAll(PDO::FETCH_CLASS,"Cheese");
         return $results;
+    }
+
+    function placeOrder()
+    {
+
     }
 ?>                
