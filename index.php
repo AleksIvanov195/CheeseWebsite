@@ -16,7 +16,7 @@
                     <?php if (empty($_SESSION["user"])):?>
                         <a href ="login_controller.php">Log in</a>
                     <?php else:?>
-                        <a>Hello, <?=$_SESSION["user"]->firstName ?></a>
+                        <h2 style ="color:white">Hello, <?=$_SESSION["user"]->firstName ?></h2>
                         <?php if ($_SESSION["user"]->role == "Manager"):?>
                             <a href ="adminPanel_controller.php">Admin Panel</a>
                         <?php endif?>

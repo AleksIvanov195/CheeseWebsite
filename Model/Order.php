@@ -2,10 +2,9 @@
 class Order
 {
     private $orderId;
-    private $customerId; //id of the customer
+    private $personId; //id of the person
     private $orderDate;
     private $orderedItems; //an array of type OrderItem containg each ordered cheese
-    private $status; //is it shipped? delivered? pending?
     private $shippingAddress; //where is it going
 
 
@@ -17,6 +16,14 @@ class Order
     function __set($attribute, $value)
     {
         $this->$attribute = $value;
+
+    }
+    function setDetails($personId, $date, $items, $address)
+    {
+        $this->personId = $personId;
+        $this->orderDate = $date;
+        $this->orderedItems = $items;
+        $this->shippingAddress = $address;
 
     }
 }

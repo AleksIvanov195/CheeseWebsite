@@ -20,10 +20,11 @@ nav
   align-items: center;
   justify-content: space-between;
 }
-nav  a 
+nav a 
 {
   display: flex;
   align-items: center;
+  text-align:center;
   justify-content: center;
   margin-right: 10px;
   font-size: 20px;

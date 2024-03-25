@@ -6,13 +6,14 @@
 
 
     <body>
+        
         <div class = "header">
             <h1>Place Order</h1>
         </div>
         <div class="box">
             <section>
                 <h2>Order details</h2>
-                <p> MEOW: <?= $total?></p>
+                <p> Total for this order: £<?= $total?></p>
                 <a href = "basket_controller.php"> Return to Basket </a>
             </section>
 
@@ -27,16 +28,22 @@
             <label for="firstName">Home Address: </label>
                 <input type = "text" name = "address" value = "<?= $_SESSION["user"]->address?>"/>
             <label for="firstName">Contact Number: </label>
-                <input type = "text" name = "contactNumber" value = "<?= $_SESSION["user"]->contactNumber?>"/>
+                <input type = "number" name = "contactNumber" value = "<?= $_SESSION["user"]->contactNumber?>"/>
             </section>
             <section>
             <!-- Will be handled by other team -->
             <h2>Payment details</h2>
-                <input type = "text" placeholder = "Enter delivery address"/>
-                <input type = "text" placeholder = "Card Number"/>
-                <input type="month" id="expiryDate" name="expiry-date" min="2024-01">
-                <input type = "text" placeholder = "CVV"/>
-                <input type = "submit" value = "Confirm Details and Place Order"></input>
+            <form method="post" action ="placeOrder_controller.php"> 
+            <label for="shippingAddress">Shipping Address: </label>
+                <input type = "text" value = "<?= $_SESSION["user"]->address?>" name ="shippingAddress"/>
+            <label for="cardNumber">Card Number: </label>
+                <input type = "number" placeholder = "Card Number" name ="cardNumber"/>
+            <label for="expiryDate">Card Expiry Date: </label> 
+                <input type="month" id="expiryDate" name="expiryDate" min="2024-01">
+            <label for="CVV">CVV Number: </label>
+                <input type = "number" placeholder = "CVV" name ="CVV"/>
+                <input type = "submit" value = "Confirm Details and Place Order" name ="placeOrder"/>
+            </form>
             </section>
         </div>
         

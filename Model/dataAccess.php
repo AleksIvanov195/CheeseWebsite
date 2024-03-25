@@ -7,7 +7,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
                 "Aleksandar",
                 "1234",
                 [PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION]);
-                //PDO provides data-access, we can issue SQL statements.
+                //PDO provides data access, we can issue SQL statements.
 
 
     function getAllPeople()
@@ -47,7 +47,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         $statement = $pdo->prepare("INSERT INTO Customer (personId, registeredDate) VALUES (?, ?)");
         $statement->execute([$personId, date('Y-m-d')]);                                 
     }
-    function getCustomer($id)
+    function getCustomerInfo($id)
     {
         global $pdo;
         $statement = $pdo->prepare("SELECT * FROM customer, person WHERE customer.personId = person.id AND person.id = ?");
@@ -56,7 +56,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         $user = $statement->fetch();
         return $user;
     }
-    function getManager($id)
+    function getManagerInfo($id)
     {
         global $pdo;
         $statement = $pdo->prepare("SELECT * FROM Manager WHERE personId = ?");
@@ -78,7 +78,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
             //Get manager info
             if ($user->role == "Manager")
             {
-                $managerInfo = getManager($user->id);
+                $managerInfo = getManagerInfo($user->id);
                 $m = new Manager();
                 $m->setInfo($managerInfo, $user);
                 return $m;       
@@ -86,7 +86,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
             //Get customer info
             else if($user->role == "Customer")
             {
-                $customerInfo = getCustomer($user->id);
+                $customerInfo = getCustomerInfo($user->id);
                 $c = new Customer();
                 $c->setInfo($customerInfo, $user);
                 return $c;   
@@ -244,8 +244,28 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         return $results;
     }
 
-    function placeOrder()
+    function placeOrder($order)
     {
-
+        global $pdo;
+        $statement = $pdo->prepare("INSERT INTO `Order` (personId, orderedItems, orderDate, shippingAddress) VALUES(?,?,?,?)");
+        //To convert the array of items into a storable string
+        $orderedItems = serialize($order->orderedItems);
+        $statement->execute([$order->personId, $orderedItems, $order->orderDate, $order->shippingAddress]);
     }
+    /*function getOrder($orderId)
+    {
+        global $pdo;
+        $statement = $pdo->prepare("SELECT * FROM test WHERE id = ?");
+        $statement->execute([$orderId]);
+        $order = $statement->fetch(PDO::FETCH_CLASS, "Order");
+        
+        if($order) 
+        {
+            $order['ordereditemsarray'] = unserialize($order['ordereditemsarray']);
+        }
+        
+        return $order;
+    }*/
+    
+      
 ?>                

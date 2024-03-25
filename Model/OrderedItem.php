@@ -28,6 +28,11 @@ class OrderedItem
     {
         $this->totalPrice = $weight * $price; 
     }
+    function setWeight($weight)
+    {
+        $this->weight = $weight;
+        $this->setTotalPrice($weight, $this->cheese->pricePerGram);
+    }
 }
 
 ?>

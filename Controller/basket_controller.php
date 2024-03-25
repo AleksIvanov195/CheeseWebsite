@@ -22,8 +22,7 @@
     //if update is clicked, update the item
     if (isset($_REQUEST["update"]) && isset($_REQUEST["itemNumber"]) && isset($_REQUEST["weight"]))
     {
-        getBasketItems()[$_REQUEST["itemNumber"]]->weight = $_REQUEST["weight"];
-        
+        getBasketItems()[$_REQUEST["itemNumber"]]->setWeight($_REQUEST["weight"]);
     }
 
     require_once "../View/basket.php";

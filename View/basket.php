@@ -22,11 +22,10 @@
                         <a id ="basket" href="basket_controller.php">Basket</a>
                     <?php endif?>
             </nav>
-
+            <h2 style ="text-align:center">Basket Items</h2>
             <main>
-            
             <?php if(!empty(getBasketItems())):?>
-                 <!-- for each item i get its index and the item -->
+                 <!-- for each item  get its index in the array and the item -->
                 <?php foreach(getBasketItems() as $index => $item):?>
                 <div class = "card">
                     <div class = "cardHeader">
@@ -36,7 +35,7 @@
                         <div class = "cardBody">
                             <form method="post" action ="basket_controller.php"> 
                                 <!-- Item number tells me where the item is stored in the basket array -->
-                                <input type = "hidden"value="<?=$index?>" name = "itemNumber">          
+                                <input type = "hidden"value="<?=$index?>" name = "itemNumber" readonly>          
                                 <div class = "formText">
                                     <p>Type: <?= $item->cheese->type?></p>
                                     <p>Origin: <?= $item->cheese->origin?></p>
@@ -59,16 +58,23 @@
                 <?php endif?>
                    
             </main>
-
-        <div class="purchaseCard">
-            <h2>Total price: £<span id ="total">0.00</span></h2>
-            <script src="../basket.js"></script>
-            <form method="post" action ="../Controller/placeOrder_controller.php"> 
-                <input type ="submit" name = "placeOrder" value ="Place Order"/>
-            </form>
-             
-
-        </div>
+            <div class="purchaseCard">
+                        
+                    <h2>Total price: £<span id ="total">0.00</span></h2>
+                    <?php if(empty($_SESSION["user"])):?>  
+                        <h2>Please <a href = "../Controller/login_controller.php">Log In</a> to place your order!</h2>
+                    <?php elseif(!empty($message)):?>
+                        <h2 style="color:green"><?=$message?></h2>
+                    <?php elseif(empty(getBasketItems())):?>
+                        <h2>Please add Items to your basket to place a order!</h2>
+                    <?php else:?>
+                        <form method="post" action ="../Controller/placeOrder_controller.php"> 
+                            <input type ="submit" name = "placeOrder" value ="Place Order"/>
+                        </form>
+                    <?php endif?>
+                    <script src="../basket.js"></script>
+       
+            </div>
         
         
 

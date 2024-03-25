@@ -50,11 +50,13 @@ section input
     margin-top: 2px;
 
 }
-
-section > * 
+section label, section input 
 {
     display: block;
+    margin-bottom: 10px;
 }
+
+
 
 .box input[type="submit"] 
 {
