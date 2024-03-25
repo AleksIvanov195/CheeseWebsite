@@ -3,6 +3,7 @@
 main{grid-area:M;}
 nav{grid-area:N;}
 .purchaseCard{grid-area:C}
+.header{grid-area:H}
 
 body
 {
@@ -11,7 +12,7 @@ body
     grid-template-rows:auto;
     grid-template-areas:
     "N N N N"
-    ". . . ."
+    "H H H H"
     ". M M C"
     ". M M C"
     
@@ -22,6 +23,7 @@ main
 {
   display:flex;
   flex-wrap:wrap;
+  border-right: 1px solid #B6B5B5;
 }
 
 .card 
@@ -53,7 +55,7 @@ main
   justify-content: space-between;
   margin-top: 10px;
 }
-.formButtons button
+input[type = submit]
 {
   margin-top: 10px;
   padding: 5px 10px;
@@ -63,14 +65,22 @@ main
   transition: background-color 0.3s ease;
   border-radius: 5px;
 }
-.formButtons button:hover
+input[type = submit]:hover
 {
   background-color: #696969;
 }
 .purchaseCard
 {
   text-align: center;
+  background-color: #eee9dc;
   
+}
+.header
+{
+  background-color: #eee5cd;
+  text-align:center;
+  padding:0px;
+  margin:0px;
 }
 
 

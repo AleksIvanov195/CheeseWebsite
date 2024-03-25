@@ -9,6 +9,8 @@
         session_start();
     }
     
+    $loggedin = false;
+    
     if(!empty($_REQUEST["email"]) && !empty($_REQUEST["password"]))
     {
         $results = getPerson($_REQUEST["email"], $_REQUEST["password"]);
@@ -28,13 +30,14 @@
                 $uniqueStrengths[] = $cheese->strength;
                 sort($uniqueStrengths);
             }
+            $loggedin = true;
             require_once "../index.php";
             //header("Location: mainPage_controller.php");
         }
 
     }
 
-    if(!isset($_SESSION["user"]))
+    if(!$loggedin)
     {
         require_once "../View/login_view.php";
     }

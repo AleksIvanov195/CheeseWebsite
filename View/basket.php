@@ -11,7 +11,7 @@
                     <?php if (empty($_SESSION["user"])):?>
                         <a href ="login_controller.php">Log in</a>
                     <?php else:?>
-                        <a>Hello, <?=$_SESSION["user"]->firstName ?></a>
+                        <h2 style ="color:white">Hello, <?=$_SESSION["user"]->firstName ?></h2>
                         <?php if ($_SESSION["user"]->role == "Manager"):?>
                             <a href ="adminPanel_controller.php">Admin Panel</a>
                         <?php endif?>
@@ -22,7 +22,7 @@
                         <a id ="basket" href="basket_controller.php">Basket</a>
                     <?php endif?>
             </nav>
-            <h2 style ="text-align:center">Basket Items</h2>
+            <h2 class ="header">Basket Items</h2>
             <main>
             <?php if(!empty(getBasketItems())):?>
                  <!-- for each item  get its index in the array and the item -->
@@ -45,8 +45,8 @@
                                     <p>Total Price: £<span name = "totalPrice"class = "totalPrice" ><?= $item->totalPrice?></span></p>
                                 </div>
                                 <div class = "formButtons">
-                                    <button type ="submit" name = "update">Update weight</button>
-                                    <button type ="submit" name ="delete">Remove Item</button>
+                                    <input type ="submit" name = "update" value ="Update weight"/>
+                                    <input type ="submit" name ="delete" value ="Remove Item"/>
                                 </div>
                             </form>
                         </div>
@@ -60,7 +60,7 @@
             </main>
             <div class="purchaseCard">
                         
-                    <h2>Total price: £<span id ="total">0.00</span></h2>
+                    <h1>Total price: £<span id ="total">0.00</span></h1>
                     <?php if(empty($_SESSION["user"])):?>  
                         <h2>Please <a href = "../Controller/login_controller.php">Log In</a> to place your order!</h2>
                     <?php elseif(!empty($message)):?>
@@ -69,7 +69,7 @@
                         <h2>Please add Items to your basket to place a order!</h2>
                     <?php else:?>
                         <form method="post" action ="../Controller/placeOrder_controller.php"> 
-                            <input type ="submit" name = "placeOrder" value ="Place Order"/>
+                            <input style ="width:200px;height: 50px"type ="submit" name = "placeOrder" value ="Place Order"/>
                         </form>
                     <?php endif?>
                     <script src="../basket.js"></script>

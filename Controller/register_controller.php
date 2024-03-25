@@ -6,15 +6,24 @@
     !empty($_REQUEST["email"]) && !empty($_REQUEST["address"]) 
         && !empty($_REQUEST["phoneNumber"]) && !empty($_REQUEST["password"]))
     {
-        registerCustomer(htmlentities($_REQUEST["firstName"]), htmlentities($_REQUEST["lastName"]), 
+        $registrationResult = registerCustomer(htmlentities($_REQUEST["firstName"]), htmlentities($_REQUEST["lastName"]), 
         htmlentities($_REQUEST["email"]), htmlentities($_REQUEST["address"]), htmlentities($_REQUEST["phoneNumber"]), htmlentities($_REQUEST["password"]));
-        $status = "Customer has been added";
+        if(!empty($registrationResult))
+        {
+            $status = false;     
+        }
+        else
+        {
+            $status = true;
+            require_once "../View/login_view.php";
+        }
+
     }
-    else
+    if(!$status)
     {
-        $status = "";
+        require_once "../View/register_view.php";
     }
 
 
-require_once "../View/register_view.php";
+
 ?>

@@ -36,16 +36,27 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         return $results;
 
     }
-    function registerCustomer($firstName, $lastName, $email,$address, $contactNumber, $password)
+    function registerCustomer($firstName, $lastName, $email, $address, $contactNumber, $password)
     {
         global $pdo;
-        $statement = $pdo->prepare("INSERT INTO Person (firstName, lastName, email, address, contactNumber, password, role)
-                                    VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $statement->execute([$firstName, $lastName, $email,$address, $contactNumber, password_hash($password,PASSWORD_DEFAULT), "Customer"]);
-
-        $personId = $pdo->lastInsertId();
-        $statement = $pdo->prepare("INSERT INTO Customer (personId, registeredDate) VALUES (?, ?)");
-        $statement->execute([$personId, date('Y-m-d')]);                                 
+        //Check if email already exists
+        $checkEmail = $pdo->prepare("SELECT * FROM Person WHERE email = ?");
+        $checkEmail->execute([$email]);
+        $user = $checkEmail->fetch();
+    
+        if (!empty($user)) 
+        {
+            return "Email already registered.";
+        } 
+        else 
+        {
+            $statement = $pdo->prepare("INSERT INTO Person (firstName, lastName, email, address, contactNumber, password, role)
+                                        VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $statement->execute([$firstName, $lastName, $email, $address, $contactNumber, password_hash($password, PASSWORD_DEFAULT), "Customer"]);   
+            $personId = $pdo->lastInsertId();
+            $statement = $pdo->prepare("INSERT INTO Customer (personId, registeredDate) VALUES (?, ?)");
+            $statement->execute([$personId, date('Y-m-d')]);    
+        }
     }
     function getCustomerInfo($id)
     {
@@ -122,14 +133,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         $result = $statement->fetchObject("Cheese"); //will fetch only 1 cheese matching the id
         return $result;        
     }
-    function getCheeseByName($name)
-    {
-        global $pdo;
-        $statement = $pdo->prepare("SELECT * FROM Cheese WHERE name = ?");
-        $statement->execute([$name]);
-        $result = $statement->fetchObject("Cheese"); //will fetch only 1 cheese matching the name
-        return $result;        
-    }
+
     function updateCheese($cheeseObject)
     {
         global $pdo;
@@ -252,20 +256,6 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         $orderedItems = serialize($order->orderedItems);
         $statement->execute([$order->personId, $orderedItems, $order->orderDate, $order->shippingAddress]);
     }
-    /*function getOrder($orderId)
-    {
-        global $pdo;
-        $statement = $pdo->prepare("SELECT * FROM test WHERE id = ?");
-        $statement->execute([$orderId]);
-        $order = $statement->fetch(PDO::FETCH_CLASS, "Order");
-        
-        if($order) 
-        {
-            $order['ordereditemsarray'] = unserialize($order['ordereditemsarray']);
-        }
-        
-        return $order;
-    }*/
-    
+
       
 ?>                
