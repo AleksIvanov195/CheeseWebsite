@@ -41,7 +41,7 @@
                                     <p>Origin: <?= $item->cheese->origin?></p>
                                     <p>Strength: <?= $item->cheese->strength?></p>
                                     <p>Price Per Gram: £<span class = "pricePerGram"><?= $item->cheese->pricePerGram?></span></p>
-                                    <p>Selected Weight: <input class="weight" name = "weight" type ="number" min="100" max="20000" onkeyup="enforceMinMax(this)" value="<?= $item->weight?>">g.</input></p>
+                                    <p>Selected Weight: <input class="weight" name = "weight" type ="number" min="100" max="20000" onchange="enforceMinMax(this)" value="<?= $item->weight?>">g.</input></p>
                                     <p>Total Price: £<span name = "totalPrice"class = "totalPrice" ><?= $item->totalPrice?></span></p>
                                 </div>
                                 <div class = "formButtons">

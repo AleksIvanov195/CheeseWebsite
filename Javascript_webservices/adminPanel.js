@@ -150,7 +150,7 @@ function hideMessages()
   $("p#deletionMessage").css("display", "none");
   $("p#confirmation").css("display", "none");
   
-  //Fixes a case where after an error, the buttons are disabled even if the correct information is entered.
+  //Fixes a case where after an error the buttons are disabled even if the correct information is entered.
   $('#deleteCheese').prop('disabled', false);
   $('#addCheese').prop('disabled', false);
 
