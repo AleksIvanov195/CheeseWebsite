@@ -46,7 +46,7 @@ function ajaxFilterCallback(results)
                         '<p>' +
                             '<input id ="id' + cheese.id + '" type ="hidden" name="cheeseId" value="' + cheese.id + '" />' +
                             'Weight in grams: ' +
-                            '<input id = "weight' + cheese.id + '" name="weight" type = "number"  min="100" max="20000"/>' +
+                            '<input id = "weight' + cheese.id + '" name="weight" type = "number"  min="100" max="20000" placeholder="min:100g"/>' +
                             '<input id="' + cheese.id + '" name = "addToBasket" type="submit" value="Add to Basket"/>' +
                         '</p>' +
                     '</div>' +

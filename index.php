@@ -3,6 +3,7 @@
     <head>
     <link rel="stylesheet" type="text/css" href="../Css/nav.css" />
     <link rel="stylesheet" type="text/css" href="../Css/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../Javascript_webservices/addToBasket.js"></script>

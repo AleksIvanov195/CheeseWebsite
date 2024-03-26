@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
     <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../Css/adminPanel.css" />
     <script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../Javascript_webservices/adminPanel.js"></script>
@@ -16,7 +17,7 @@
         <div class = "box">
             <section>        
                 <h2>Admin Details</h2>
-                <p>ID: <?= $_SESSION["user"]->managerId?></p>
+                <p>Manager ID: <?= $_SESSION["user"]->managerId?></p>
                 <p>Name: <?= $_SESSION["user"]->firstName?></p>
                 <a href = "mainPage_controller.php"> Back to home </a>
             </section>

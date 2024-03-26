@@ -7,17 +7,32 @@ nav{grid-area:N;}
 
 body
 {
-    display:grid;
-    grid-template-columns: 0.5fr 2fr 2fr 1.5fr;
-    grid-template-rows:auto;
-    grid-template-areas:
-    "N N N N"
-    "H H H H"
-    ". M M C"
-    ". M M C"
-    
-    ;
-    background-color: #f0ece2; 
+  display:grid;
+  grid-template-columns:1fr;
+  grid-template-rows:auto;
+  grid-template-areas:
+  "N"
+  "H"
+  "C"
+  "M"
+  ;
+  background-color: #f0ece2;
+}
+@media (min-width: 600px) 
+{
+  body
+  {
+      display:grid;
+      grid-template-columns: 0.5fr 2fr 2fr 1.5fr;
+      grid-template-rows:auto;
+      grid-template-areas:
+      "N N N N"
+      "H H H H"
+      ". M M C"
+      ". M M C"
+      
+      ;
+  }
 }
 main
 {
@@ -25,16 +40,24 @@ main
   flex-wrap:wrap;
   border-right: 1px solid #B6B5B5;
 }
-
 .card 
 {
-  width: 300px;
+  width:90%;
   border:0.5px solid #B6B5B5;
   background-color:#dfd3c3; 
   box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-  margin-top: 20px; 
-  margin-right: 20px; 
   margin-bottom: 20px; 
+  margin-left: 20px;
+}
+@media (min-width: 600px) 
+{
+  .card 
+  {
+    margin-top: 20px; 
+    margin-right: 20px; 
+    width: 300px; 
+    margin-left: 0px;
+  }
 }
 .cardHeader 
 {
