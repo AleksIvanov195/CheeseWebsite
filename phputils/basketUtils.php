@@ -19,7 +19,7 @@
         }
         
     }
-    function getItemCount()
+    function getBasketItemCount()
     {
         return count($_SESSION["basket"]);
     }

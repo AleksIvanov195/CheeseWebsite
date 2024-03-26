@@ -21,7 +21,7 @@ function ajaxAddToBasket()
 
 function ajaxAddToBasketCallBack(result)
 {
-    console.log("Added");
+    //console.log("Added");
     updateBasketSize(result);
 }
 

@@ -2,7 +2,7 @@
     
     require_once "../Model/Cheese.php";
     require_once "../Model/dataAccess.php";
-
+    //If action is add
     if($_REQUEST["action"] == "add" && isset($_REQUEST["cheeseName"]) && isset($_REQUEST["cheeseType"]) && isset($_REQUEST["cheeseOrigin"]) && isset($_REQUEST["cheeseStrength"]) && isset($_REQUEST["cheesePrice"]))
     {
         $cheese = new Cheese();
@@ -12,19 +12,22 @@
         //Send back a string containing the name
         echo $cheese->name;
     }
+    //If action is delete
     else if($_REQUEST["action"] == "delete" && isset($_REQUEST["id"]))
     {
         //Send back a string sent by the dataAccess function
         echo deleteCheese($_REQUEST["id"]);
 
     }
+    //If action is getCheese
     else if($_REQUEST["action"] == "getCheese" && isset($_REQUEST["id"]))
     {
-        //Specifying the content type for this case only.
+        //Specifying the content type for this case only to return a JSON representation of the cheese.
         header('Content-Type: application/json');   
         $results = getCheeseById($_REQUEST["id"]);
         echo json_encode($results);
     }
+    //If action is update
     else if($_REQUEST["action"] == "update" && isset($_REQUEST["cheeseName"]) && isset($_REQUEST["id"])&& isset($_REQUEST["cheeseType"]) && isset($_REQUEST["cheeseOrigin"]) && isset($_REQUEST["cheeseStrength"]) && isset($_REQUEST["cheesePrice"]))
     {
         $cheese = new Cheese();

@@ -8,7 +8,7 @@
     {
         //Gets item id and weight and calls the addToBasket function. 
         addToBasket($_REQUEST["id"], (int)$_REQUEST["weight"]);
-        echo getItemCount();
+        echo getBasketItemCount();
         
     }  
 ?>
