@@ -1,6 +1,8 @@
 <!doctype html>
 <html>
     <head>
+    <title>Home Page: Purchase the best Cheeses</title>
+    <html lang="en-UK">
     <link rel="stylesheet" type="text/css" href="../Css/nav.css" />
     <link rel="stylesheet" type="text/css" href="../Css/styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,57 +30,60 @@
                         <a id ="basket" href="basket_controller.php">Basket</a>
                     <?php endif?>
             </nav>
-            <div class = "filters">
+            <div class = "filters" aria-label="Filter Section">
           
                     <div class="searchContainer">
-                        <input name = "search" placeholder="Search for cheese">
-                        <input id = "searchButton" type = "submit" value = "Search"/>
+                        <input name = "search" placeholder="Search for cheese" aria-label="Search for cheese">
+                        <input id = "searchButton" type = "submit" value = "Search" aria-label="Go"/>
                     </div>
-                        
-                        <p style = "margin-bottom: -40px; font-weight: bold">Cheese Type</p>
+                        <p style = "margin-bottom: -40px; font-weight: bold" aria-label="Cheese Types">Cheese Type</p>
                         <br></br>
 
-                        <?php foreach(array_unique($uniqueTypes) as $type):?>
-                        <ul style = "margin-left: -30px; margin-bottom: -10px;">             
+                        
+                        <ul style = "margin-left: -30px; margin-bottom: -10px;" aria-label="Cheese Types"> 
+                        <?php foreach(array_unique($uniqueTypes) as $type):?>            
                             <label>
                                 <input type="checkbox" name="cheeseType[]" value="<?= $type?>"> 
                                 <?= $type?>
                             </label>
+                            <?php endforeach?> 
                         </ul>
-                        <?php endforeach?> 
+                        
 
                         
                         <p style = "margin-bottom: -40px; font-weight: bold">Country of Origin</p>
                         <br></br>
 
+                        <ul style = "margin-left: -30px; margin-bottom: -10px" aria-label="Cheese Origin">
                         <?php foreach(array_unique($uniqueOrigins) as $origin):?>
-                        <ul style = "margin-left: -30px; margin-bottom: -10px">
                             <label>
                                 <input type="checkbox" name="cheeseOrigin[]" value="<?= $origin?> "> 
                                 <?= $origin?>
-                            </label>         
+                            </label> 
+                            <?php endforeach?>        
                         </ul>
-                        <?php endforeach?>
+                        
 
                         
                         <p style = "margin-bottom: -40px; font-weight: bold">Cheese Strength</p>
                         <br></br>
 
+                        <ul style = "margin-left: -30px; margin-bottom: -10px" aria-label="Cheese Strength">
                         <?php foreach(array_unique($uniqueStrengths) as $strength):?>
-                        <ul style = "margin-left: -30px; margin-bottom: -10px">
                             <label>
                                 <input type="checkbox"name="cheeseStrength[]" value="<?= $strength?>"> 
                                 <?= $strength?>
                             </label> 
+                            <?php endforeach?> 
                         </ul> 
-                        <?php endforeach?> 
+
                          
                         
                         <p style = "margin-bottom: -30px; font-weight: bold">Price per gram</p>
                         <br></br>
-                        <input type = "number" name="minPrice" placeholder="Min Price" style="width: 30%;">
-                        <input type = "number" name="maxPrice" placeholder="Max Price" style="width: 30%;">
-                        <input id = "searchButton" type = "submit" value = "Go"/>                 
+                        <input type = "number" name="minPrice" placeholder="Min Price" style="width: 30%;" aria-label="Minimum Price">
+                        <input type = "number" name="maxPrice" placeholder="Max Price" style="width: 30%;" aria-label="Maximum Price">
+                        <input id = "searchButton" type = "submit" value = "Go" aria-label="Go"/>                 
                 
             </div>
 
@@ -89,7 +94,7 @@
                 <?php foreach($results as $cheese):?>
                     <div class = "card">
                         <div class = "cardBody">
-                            <h3><?= $cheese->name?></h3>
+                            <h3 aria-label="Cheese Name"><?= $cheese->name?></h3>
                             
                             <p>Type: <?= $cheese->type?></p>
                             <p>Origin: <?= $cheese->origin?></p>
@@ -99,9 +104,9 @@
                             <p>
                                 <input id ="id<?= $cheese->id?>" type ="hidden" name="cheeseId" value="<?= $cheese->id?>" />
                                 Weight in grams:
-                                <input id = "weight<?= $cheese->id?>" name="weight" type = "number"  min="100" max="20000" placeholder="min:100g"/>
+                                <input id = "weight<?= $cheese->id?>" name="weight" type = "number"  min="100" max="20000" placeholder="min:100g" aria-label="Weight in grams"/>
                                 
-                                <input id="<?= $cheese->id?>" name = "addToBasket" type="submit" value="Add to Basket"/>
+                                <input id="<?= $cheese->id?>" name = "addToBasket" type="submit" value="Add to Basket" aria-label="Add To Basket" />
                                 </p>
                             </div>
                         </div>  

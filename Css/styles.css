@@ -101,6 +101,11 @@ input[type="number"]
   background-color: #dfd3c3; 
   padding-left: 5px;
 }
+.filters label 
+{
+  display: block;
+  margin-bottom: 4px;
+}
 
 
 label:hover

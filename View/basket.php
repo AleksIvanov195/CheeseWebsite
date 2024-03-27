@@ -1,6 +1,8 @@
 <!doctype html>
 <html>
     <head>
+    <title>Basket Page</title>
+    <html lang="en-UK">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../Css/basket.css" />
     <link rel="stylesheet" type="text/css" href="../Css/nav.css" />
@@ -30,7 +32,7 @@
                 <?php foreach(getBasketItems() as $index => $item):?>
                 <div class = "card">
                     <div class = "cardHeader">
-                        <h3><?= $item->cheese->name?></h3>
+                        <h3 aria-label="Cheese Name"><?= $item->cheese->name?></h3>
                     </div>
                     
                         <div class = "cardBody">
@@ -46,8 +48,8 @@
                                     <p>Total Price: £<span name = "totalPrice"class = "totalPrice" ><?= $item->totalPrice?></span></p>
                                 </div>
                                 <div class = "formButtons">
-                                    <input type ="submit" name = "update" value ="Update weight"/>
-                                    <input type ="submit" name ="delete" value ="Remove Item"/>
+                                    <input type ="submit" name = "update" value ="Update weight" aria-label="Select to update weight"/>
+                                    <input type ="submit" name ="delete" value ="Remove Item" aria-label="Select to delete cheese from basket"/>
                                 </div>
                             </form>
                         </div>

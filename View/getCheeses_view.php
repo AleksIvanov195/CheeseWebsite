@@ -1,6 +1,8 @@
 <!doctype html>
 <html>
     <head>
+    <title>Cheeses View</title>
+    <html lang="en-UK">
     <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Cheeses view</title>
     </head>
