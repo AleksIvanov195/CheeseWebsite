@@ -20,7 +20,7 @@
     if(isset($_REQUEST["placeOrder"])&& isset($_REQUEST["shippingAddress"]))
     {
         $order = new Order();
-        $order->setDetails($_SESSION["user"]->id, date("Y-m-d"), $_SESSION["basket"], $_REQUEST["shippingAddress"]);
+        $order->setDetails($_SESSION["user"]->id, date("Y-m-d"), $_SESSION["basket"], htmlentities($_REQUEST["shippingAddress"]));
         placeOrder($order);
         $orderPlaced = true;
         unset($_SESSION["basket"]);

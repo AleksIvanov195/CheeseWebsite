@@ -17,20 +17,6 @@
     $name = $types = $origins = $strength = "";
     $priceRange = array(0.001,1000); //Make sure there is always a valid range for min and max price per gram (filters)
 
-/*
-    if(empty($_REQUEST["weight"])) 
-    {   
-        //status = please enter valid weigth e.g. 1.5
-        
-    }
-    else
-    {
-        addToBasket($_REQUEST["cheeseId"], $_REQUEST["weight"]);
-    }
-
-    //print_r(getBasketItems());
-    //$basketItems = getBasketItems();
-    */
     //Filters
     foreach($allCheeses as $cheese)
     {

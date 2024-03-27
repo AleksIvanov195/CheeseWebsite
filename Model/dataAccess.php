@@ -61,7 +61,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
     function getCustomerInfo($id)
     {
         global $pdo;
-        $statement = $pdo->prepare("SELECT * FROM customer, person WHERE customer.personId = person.id AND person.id = ?");
+        $statement = $pdo->prepare("SELECT * FROM Customer, Person WHERE Customer.personId = Person.id AND Person.id = ?");
         $statement->execute([$id]);
         $statement->setFetchMode(PDO::FETCH_CLASS, 'Customer');
         $user = $statement->fetch();

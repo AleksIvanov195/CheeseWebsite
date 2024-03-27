@@ -32,7 +32,6 @@
             }
             $loggedin = true;
             require_once "../index.php";
-            //header("Location: mainPage_controller.php");
         }
 
     }

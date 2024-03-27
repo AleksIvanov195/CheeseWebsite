@@ -1,4 +1,5 @@
 <?php
+//Used to store the info of what the user added to the basket
 class OrderedItem 
 {
     private $cheese;    // The cheese (as object)
