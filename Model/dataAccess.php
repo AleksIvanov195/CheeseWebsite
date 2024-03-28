@@ -36,12 +36,12 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         return $results;
 
     }
-    function registerCustomer($firstName, $lastName, $email, $address, $contactNumber, $password)
+    function registerCustomer($customer)
     {
         global $pdo;
         //Check if email already exists
         $checkEmail = $pdo->prepare("SELECT * FROM Person WHERE email = ?");
-        $checkEmail->execute([$email]);
+        $checkEmail->execute([$customer->email]);
         $user = $checkEmail->fetch();
     
         if (!empty($user)) 
@@ -52,10 +52,11 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         {
             $statement = $pdo->prepare("INSERT INTO Person (firstName, lastName, email, address, contactNumber, password, role)
                                         VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $statement->execute([$firstName, $lastName, $email, $address, $contactNumber, password_hash($password, PASSWORD_DEFAULT), "Customer"]);   
+            $statement->execute([$customer->firstName, $customer->lastName, 
+                                $customer->email, $customer->address, $customer->contactNumber, $customer->password, "Customer"]); 
             $personId = $pdo->lastInsertId();
             $statement = $pdo->prepare("INSERT INTO Customer (personId, registeredDate) VALUES (?, ?)");
-            $statement->execute([$personId, date('Y-m-d')]);    
+            $statement->execute([$personId, $customer->registeredDate]);    
         }
     }
     function getCustomerInfo($id)

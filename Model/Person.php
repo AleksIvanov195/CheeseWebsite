@@ -22,7 +22,7 @@
         $this->$attribute = $value;
     } 
     //A function which is used to set the details of Managers & Customers, usually used in the DataAccess.
-    public function setInfo($parameterOne, $parameterTwo)
+    public function setInfo($specificData, $personData)
     {
 
     }

@@ -30,6 +30,16 @@ class Customer extends Person
 
 
     }
+    public function setCustomerInfo($firstName, $lastName, $email, $address, $contactNumber, $password, $registeredDate)
+    {
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->email = $email;
+        $this->address = $address;
+        $this->contactNumber = $contactNumber;
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
+        $this->registeredDate = $registeredDate;
+    }
 }
 
 

@@ -23,7 +23,7 @@
                 <label for="address">Home Address: </label>
                     <input name = "address" placeholder="Address"required aria-label="Enter Home Address">
                 <label for="phoneNumber">Phone Number: </label>
-                    <input name = "phoneNumber" placeholder="Phone Number"required aria-label="Enter Phone Number" type="number">
+                    <input name = "contactNumber" placeholder="Phone Number" required aria-label="Enter Phone Number" type="number">
                 <label for="password">Password: </label>
                     <input type="password"name = "password" placeholder="Password"required aria-label="Enter Password">
             </div>
