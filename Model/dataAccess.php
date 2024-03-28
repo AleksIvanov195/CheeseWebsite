@@ -36,6 +36,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         return $results;
 
     }
+    //Takes customer object as parameter
     function registerCustomer($customer)
     {
         global $pdo;
@@ -62,7 +63,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
     function getCustomerInfo($id)
     {
         global $pdo;
-        $statement = $pdo->prepare("SELECT * FROM Customer, Person WHERE Customer.personId = Person.id AND Person.id = ?");
+        $statement = $pdo->prepare("SELECT * FROM Customer WHERE personId = ?");
         $statement->execute([$id]);
         $statement->setFetchMode(PDO::FETCH_CLASS, "Customer");
         $user = $statement->fetch();
