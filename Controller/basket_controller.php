@@ -15,8 +15,7 @@
     //if delete is clicked, remove the item
     if (isset($_REQUEST["delete"]))
     {
-        basketDeleteItem($_REQUEST["itemNumber"]);
-        
+        basketDeleteItem($_REQUEST["itemNumber"]);       
     }
 
     //if update is clicked, update the item

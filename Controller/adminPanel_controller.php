@@ -10,7 +10,7 @@
     //If the user is not an admin, they will be redirected to the mainpage
     if (empty($_SESSION["user"]) || $_SESSION["user"]->role != "Manager")
     {
-        //Info needed for the main page to function properly
+        //Data needed for the main page to function properly
         $results = getAllCheeses();
         foreach($results as $cheese)
         {

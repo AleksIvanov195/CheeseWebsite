@@ -23,7 +23,7 @@
                 <label for="address">Home Address: </label>
                     <input name = "address" placeholder="Address"required aria-label="Enter Home Address">
                 <label for="phoneNumber">Phone Number: </label>
-                    <input name = "phoneNumber" placeholder="Phone Number"required aria-label="Enter Phone Number">
+                    <input name = "phoneNumber" placeholder="Phone Number"required aria-label="Enter Phone Number" type="number">
                 <label for="password">Password: </label>
                     <input type="password"name = "password" placeholder="Password"required aria-label="Enter Password">
             </div>
@@ -32,7 +32,7 @@
                 <p style="color: green"><?=$status?></p>
             <?php endif ?>
         </form>
-            <h5><a href="login_controller.php" aria-label="Click here if you want to log in">Already Registered?!</a><h5>
+            <h5><a href="login_controller.php" aria-label="Click here if you want to log in">Already Registered?</a><h5>
             <h5><a href="mainPage_controller.php" aria-label="Click to return to home page">Return to Home</a><h5>
                 <?php if(!empty( $registrationResult)):?>
                     <p style="color:red"> <?=$registrationResult?></p>

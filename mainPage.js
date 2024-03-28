@@ -2,7 +2,7 @@ $(document).ready(initialisePage);
 
 function initialisePage()
 {
-    $("input[name='weight']").change(enforceMinAndMax);
+    $('input[name="weight"]').change(enforceMinAndMax);
 }
 function enforceMinAndMax()
 {

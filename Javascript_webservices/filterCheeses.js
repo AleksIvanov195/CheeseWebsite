@@ -57,5 +57,7 @@ function ajaxFilterCallback(results)
         }
         //So addtobasket button can be used after filtering
         $('input[name="addToBasket"]').click(ajaxAddToBasket);
+        //Weight will still have the validation
+        $('input[name="weight"]').change(enforceMinAndMax);
     }
 }
