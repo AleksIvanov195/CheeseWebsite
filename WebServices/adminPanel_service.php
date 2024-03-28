@@ -6,6 +6,7 @@
     if($_REQUEST["action"] == "add" && isset($_REQUEST["cheeseName"]) && isset($_REQUEST["cheeseType"]) && isset($_REQUEST["cheeseOrigin"]) && isset($_REQUEST["cheeseStrength"]) && isset($_REQUEST["cheesePrice"]))
     {
         $cheese = new Cheese();
+        //First value is 0, as here the ID of the cheese doesn't matter, it will be automatically assigned by the database.
         $cheese->setCheeseDetails(0, htmlentities($_REQUEST["cheeseName"]),htmlentities($_REQUEST["cheeseType"]),
         htmlentities($_REQUEST["cheeseOrigin"]), htmlentities($_REQUEST["cheeseStrength"]), htmlentities($_REQUEST["cheesePrice"])); 
         addNewCheese($cheese);
@@ -15,7 +16,7 @@
     //If action is delete
     else if($_REQUEST["action"] == "delete" && isset($_REQUEST["id"]))
     {
-        //Send back a string sent by the dataAccess function
+        //Send back a string sent by the dataAccess function, cheese doesnt exist or confirmation messages.
         echo deleteCheese($_REQUEST["id"]);
 
     }

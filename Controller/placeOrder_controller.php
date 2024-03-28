@@ -17,9 +17,10 @@
     {
         $total += $item->totalPrice;
     }
-    if(isset($_REQUEST["placeOrder"])&& isset($_REQUEST["shippingAddress"]))
+    if(isset($_REQUEST["placeOrder"])&& !empty($_REQUEST["shippingAddress"]))
     {
         $order = new Order();
+        //Setting order details, also using htmlentities for the shipping address as that is what the user inputs in the database, XSS protection
         $order->setDetails($_SESSION["user"]->id, date("Y-m-d"), $_SESSION["basket"], htmlentities($_REQUEST["shippingAddress"]));
         placeOrder($order);
         $orderPlaced = true;
@@ -27,6 +28,7 @@
         $message = "Thanks for your order! Please add items to your basket to start a new order!";
         require_once "../View/basket.php";
     }
+    //If order is not placed require the view
     if(!$orderPlaced)
     {
         require_once "../View/placeOrder_view.php";

@@ -7,7 +7,7 @@
     {
         session_start();
     }
-    //If the user is not an admin, they will be redirected to the mainpage
+    //If the user is not an admin, they will be redirected to the mainpage as a security measure
     if (empty($_SESSION["user"]) || $_SESSION["user"]->role != "Manager")
     {
         //Data needed for the main page to function properly

@@ -2,8 +2,9 @@ let weights = document.getElementsByClassName("weight");
 for (let i = 0; i < weights.length; i++) 
 {
     //Set event listiner to each input field, when user changes value it will call updateTotal function
-    weights[i].addEventListener("input", updateTotal);
+    weights[i].addEventListener("change", updateTotal);
 }
+//Calling function once to display the total.
 updateTotal();
 
 //Update total
@@ -29,6 +30,7 @@ function updateTotal()
 
 }
 
+//Forcing min value of 100 and max value of 20000.
 function enforceMinMax(input)
 {
     if(input.value > 20000)

@@ -13,7 +13,7 @@ class Customer extends Person
         $this->$attribute = $value;
 
     }
-
+    //Takes the "Person" object info returned by the dataaccess and the customerinfo object.
     #[Override]
     public function setInfo($customerInfo, $personInfo)
     {

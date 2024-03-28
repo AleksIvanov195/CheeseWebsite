@@ -10,10 +10,12 @@
     }
     
     $loggedin = false;
-    
+    //Used not empty to ensure no empty strings
     if(!empty($_REQUEST["email"]) && !empty($_REQUEST["password"]))
     {
+        //Gets the person
         $results = getPerson($_REQUEST["email"], $_REQUEST["password"]);
+        //If it is empty
         if(empty($results))
         {
             $errorMessage = "Wrong email or password, please try again.";

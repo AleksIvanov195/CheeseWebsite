@@ -9,7 +9,6 @@
     {
         session_start();
     }
-    
 
     $allCheeses = getAllCheeses(); 
     $types = array();
@@ -17,7 +16,7 @@
     $name = $types = $origins = $strength = "";
     $priceRange = array(0.001,1000); //Make sure there is always a valid range for min and max price per gram (filters)
 
-    //Filters
+    //Filters 
     foreach($allCheeses as $cheese)
     {
         $uniqueTypes[] = $cheese->type;
@@ -25,7 +24,7 @@
         $uniqueStrengths[] = $cheese->strength;
         sort($uniqueStrengths);
     }
-    
+    //These filters are now used in the webservice "filteredCheeses"
     if(isset($_REQUEST["search"])) //if user entered a name
     {
         $name = $_REQUEST["search"]; //get the entered name

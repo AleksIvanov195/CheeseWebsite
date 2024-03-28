@@ -16,7 +16,7 @@
         {
             $this->$attribute = $value;
         }
-
+        //Takes the "Person" object info returned by the dataaccess and the managerinfo object.
         #[Override]
         public function setInfo($managerInfo, $personInfo)
         {

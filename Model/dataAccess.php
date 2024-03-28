@@ -63,7 +63,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         global $pdo;
         $statement = $pdo->prepare("SELECT * FROM Customer, Person WHERE Customer.personId = Person.id AND Person.id = ?");
         $statement->execute([$id]);
-        $statement->setFetchMode(PDO::FETCH_CLASS, 'Customer');
+        $statement->setFetchMode(PDO::FETCH_CLASS, "Customer");
         $user = $statement->fetch();
         return $user;
     }
@@ -72,7 +72,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         global $pdo;
         $statement = $pdo->prepare("SELECT * FROM Manager WHERE personId = ?");
         $statement->execute([$id]);
-        $statement->setFetchMode(PDO::FETCH_CLASS, 'Manager');
+        $statement->setFetchMode(PDO::FETCH_CLASS, "Manager");
         $user = $statement->fetch();
         return $user;
     }
@@ -81,7 +81,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
         global $pdo;
         $statement = $pdo->prepare("SELECT * FROM Person WHERE email = ?");
         $statement->execute([$email]);
-        $statement->setFetchMode(PDO::FETCH_CLASS, 'Person');
+        $statement->setFetchMode(PDO::FETCH_CLASS, "Person");
         $user = $statement->fetch();
         //Password valid
         if ($user && password_verify($password, $user->password)) 

@@ -9,6 +9,7 @@ function initialisePage()
   $("input#cheeseStrength").keyup(enforceMinAndMax);
   $("input").on("input",hideMessages);
 }
+//Functions
 //When add cheese is clicked
 function ajaxAddCheese()
 {
@@ -34,7 +35,7 @@ function ajaxAddCheese()
       origin = capitalizeFirstLetter(origin);
       name = capitalizeFirstLetter(name);
       type = capitalizeFirstLetter(type);
-
+      //Send the request
       $.get("../WebServices/adminPanel_service.php?action=add&cheeseName="+name+"&cheeseType="+type+"&cheeseOrigin="+origin+"&cheeseStrength="+ strength+ "&cheesePrice="+ pricePerGram, ajaxAddCheeseCallBack)
 
 
@@ -66,7 +67,7 @@ function ajaxDeleteCheese()
     }
 
 }
-
+//This is currently used for the "update", however it can be re-used anywhere where we need to get the cheese
 function ajaxGetCheese()
 {
   var id = $("input#cheeseUpdate").val();
@@ -85,7 +86,7 @@ function ajaxUpdateCheese()
   $.get("../WebServices/adminPanel_service.php?action=update&cheeseName="+name+"&id="+id+"&cheeseType="+type+"&cheeseOrigin="+origin+"&cheeseStrength="+ strength+ "&cheesePrice="+ price, ajaxUpdateCheeseCallBack);
 }
 
-//CallBacks
+//AJAX callbacks
 function ajaxAddCheeseCallBack(result)
 {
     $("p#confirmation").text(result +" has been added.");
