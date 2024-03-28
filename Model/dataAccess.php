@@ -160,7 +160,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
     function getFilteredCheeses($name,$types, $origins, $strength, $priceRange)
     {
         global $pdo;
-        //this is the query i will be executing, the 1=1 is always true, so i can just use AND and not worry about if something is the first where condition
+        //This is the query i will be executing, the 1=1 is always true, so i can just use AND and not worry about if something is the first where condition
         $query = "SELECT * FROM Cheese WHERE 1=1";
 
         if(!empty($name))
@@ -177,7 +177,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
             {
                 $types = explode(",", $types);
             }
-            $placeholders = str_repeat('?,', count($types) - 1) . '?'; //str_repeat concatenate "?," to the string, number of times in this case it is the size of $types array - 1, because otherwise another "," will be printed which will cause an error
+            $placeholders = str_repeat("?,", count($types) - 1) . "?"; //str_repeat concatenate "?," to the string, number of times in this case it is the size of $types array - 1, because otherwise another "," will be printed which will cause an error
             $query .= " AND type IN ($placeholders)"; //concatenate to the query the " AND type IN ($placeholders)" condition
             //the query will look like something like this if type has 3 values: SELECT * FROM Cheese WHERE 1=1 AND type IN(?, ?, ?)
             if(!empty($params)) //this checks if the array $params has any values, because if it doesn't it will error due to $params not being an array in array_merge();
@@ -198,7 +198,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
             {
                 $origins = explode(",", $origins);
             }
-            $placeholders = str_repeat('?,', count($origins) - 1) . '?';
+            $placeholders = str_repeat("?,", count($origins) - 1) . "?";
             $query .= " AND origin IN ($placeholders)";
             //the query will look like something like this if origin has 2 values: SELECT * FROM Cheese WHERE 1=1 AND origin IN(?, ?)
             if(!empty($params))//this checks if the array $params has any values, because if it doesn't it will error due to $params not being an array in array_merge();
@@ -217,7 +217,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
             {
                 $strength = explode(",", $strength);
             }
-            $placeholders = str_repeat('?,', count($strength) - 1) . '?';
+            $placeholders = str_repeat("?,", count($strength) - 1) . "?";
             $query .= " AND strength IN ($placeholders)";
             
             if(!empty($params))
@@ -253,7 +253,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=test",
     function placeOrder($order)
     {
         global $pdo;
-        $statement = $pdo->prepare("INSERT INTO `Order` (personId, orderedItems, orderDate, shippingAddress) VALUES(?,?,?,?)");
+        $statement = $pdo->prepare("INSERT INTO Order (personId, orderedItems, orderDate, shippingAddress) VALUES(?,?,?,?)");
         //To convert the array of items into a storable string
         $orderedItems = serialize($order->orderedItems);
         $statement->execute([$order->personId, $orderedItems, $order->orderDate, $order->shippingAddress]);

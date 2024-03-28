@@ -7,14 +7,14 @@ function initialisePage()
 function ajaxAddToBasket()
 {
   //The clicked button ID is the ID of the cheese inside the card, where the button is clicked.
-  var cheeseId = $(this).attr('id');
+  var cheeseId = $(this).attr("id");
   //The id of each cheese and weight input element is id#<cheeseid> and weight#<cheeseid>
     //Therefore I can use the ID of the input button to get the correct cheese and add it to the basket.
-  var weight = $('#weight' + cheeseId).val();
+  var weight = $("#weight" + cheeseId).val();
   //Cheese cannot be added if there is no value entered.
   if(weight >= 100)
   {
-    var id = $('#id' + cheeseId).val();
+    var id = $("#id" + cheeseId).val();
     $.get("../WebServices/addToBasket_service.php?id=" + id + "&weight=" + weight, ajaxAddToBasketCallBack);
   }
 }
@@ -28,6 +28,6 @@ function ajaxAddToBasketCallBack(result)
 //Update the basket size
 function updateBasketSize(result)
 {
-  $("#basket").text('Basket ('+result.replace(/ /g,'')+')');
+  $("#basket").text("Basket ("+result.replace(/ /g,'')+")");
 }
 

@@ -35,11 +35,11 @@ function enforceMinMax(input)
 {
     if(input.value > 20000)
     {
-        input.value='20000';
+        input.value="20000";
     }
     else if(input.value<100)
     {
-        input.value='100';
+        input.value="100";
     }
 } 
 

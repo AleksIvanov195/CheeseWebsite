@@ -10,7 +10,7 @@
     {
         $customer = new Customer();
         $customer->setCustomerInfo(htmlentities($_REQUEST["firstName"]),htmlentities($_REQUEST["lastName"]),htmlentities($_REQUEST["email"]), 
-        htmlentities($_REQUEST["address"]), htmlentities($_REQUEST["contactNumber"]), $_REQUEST["password"], date('Y-m-d'));
+        htmlentities($_REQUEST["address"]), htmlentities($_REQUEST["contactNumber"]), $_REQUEST["password"], date("Y-m-d"));
         $registrationResult = registerCustomer($customer);
         //print_r($registrationResult);
         if(!empty($registrationResult))

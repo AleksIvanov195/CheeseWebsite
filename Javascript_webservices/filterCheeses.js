@@ -3,7 +3,7 @@ $(document).ready(initialisePage);
 function initialisePage()
 {
   $("input#searchButton").click(ajaxGetFilteredCheeses);
-  $('input[type=checkbox]').change(ajaxGetFilteredCheeses);
+  $("input[type=checkbox]").change(ajaxGetFilteredCheeses);
   
 
 }
@@ -38,19 +38,19 @@ function ajaxFilterCallback(results)
         //$("div#results").append(cheese.name);
         var cheeseCard = '<div class = "card">' +
                     '<div class = "cardBody">' +
-                        '<h3>' + cheese.name + '</h3>' +
-                        '<p>Type: ' + cheese.type + '</p>' +
-                        '<p>Origin: ' + cheese.origin + '</p>' +
-                        '<p>Strength: ' + cheese.strength + '</p>' +
-                        '<p>Price: £' + cheese.pricePerGram + '/g</p>' +
-                        '<p>' +
+                        "<h3>" + cheese.name + "</h3>" +
+                        "<p>Type: " + cheese.type + "</p>" +
+                        "<p>Origin: " + cheese.origin + "</p>" +
+                        "<p>Strength: " + cheese.strength + "</p>" +
+                        "<p>Price: £" + cheese.pricePerGram + "/g</p>" +
+                        "<p>" +
                             '<input id ="id' + cheese.id + '" type ="hidden" name="cheeseId" value="' + cheese.id + '" />' +
                             'Weight in grams: ' +
                             '<input id = "weight' + cheese.id + '" name="weight" type = "number"  min="100" max="20000" placeholder="min:100g"/>' +
                             '<input id="' + cheese.id + '" name = "addToBasket" type="submit" value="Add to Basket"/>' +
-                        '</p>' +
-                    '</div>' +
-                '</div>';
+                        "</p>" +
+                    "</div>" +
+                "</div>";
 
             $("main").append(cheeseCard);
             

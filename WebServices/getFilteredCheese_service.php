@@ -1,5 +1,5 @@
 <?php
-    header('Content-Type: application/json'); //Will return JSON representation of the cheeses.
+    header("Content-Type: application/json"); //Will return JSON representation of the cheeses.
     require_once "../Model/Cheese.php";
     require_once "../Model/dataAccess.php";
     $types = array();

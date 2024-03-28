@@ -24,7 +24,7 @@
     else if($_REQUEST["action"] == "getCheese" && isset($_REQUEST["id"]))
     {
         //Specifying the content type for this case only to return a JSON representation of the cheese.
-        header('Content-Type: application/json');   
+        header("Content-Type: application/json");   
         $results = getCheeseById($_REQUEST["id"]);
         echo json_encode($results);
     }

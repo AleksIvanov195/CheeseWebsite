@@ -25,13 +25,13 @@ function ajaxAddCheese()
     {
       $("p#confirmation").text("Fields cannot be empty!");
       $("p#confirmation").css({"display": "block","color": "red"});
-      $('#addCheese').prop('disabled', true);
+      $("#addCheese").prop("disabled", true);
     }
     //If none are empty
     else
     {
       $("p#confirmation").css({"display": "none","color": "green"});
-      $('#addCheese').prop('disabled', false);
+      $("#addCheese").prop("disabled", false);
       origin = capitalizeFirstLetter(origin);
       name = capitalizeFirstLetter(name);
       type = capitalizeFirstLetter(type);
@@ -49,11 +49,11 @@ function ajaxDeleteCheese()
     {
       $("p#deletionMessage").text("Fields cannot be empty!");
       $("p#deletionMessage").css({"display": "block", "color": "red"});
-      $('#deleteCheese').prop('disabled', true);
+      $("#deleteCheese").prop("disabled", true);
     }
     else
     {
-      $('#deleteCheese').prop('disabled', false);
+      $("#deleteCheese").prop("disabled", false);
       if (confirm("Are you sure you want to delete cheese with ID: "+id+"?")) 
       {
         // User clicked ok
@@ -128,14 +128,14 @@ function enforceMinAndMax()
 {
   if ($(this).val() < 1 || $(this).val() > 5) 
   {
-    $('#addCheese').prop('disabled', true);
+    $("#addCheese").prop("disabled", true);
     $("#error").text("Cheese Strength must be between 1 and 5.");
     $("#error").css("display", "block");
     $(this).val("");
   }
   else
   {
-    $('#addCheese').prop('disabled', false);
+    $("#addCheese").prop("disabled", false);
     $("#error").css("display", "none");
   }
 }
@@ -152,8 +152,8 @@ function hideMessages()
   $("p#confirmation").css("display", "none");
   
   //Fixes a case where after an error the buttons are disabled even if the correct information is entered.
-  $('#deleteCheese').prop('disabled', false);
-  $('#addCheese').prop('disabled', false);
+  $("#deleteCheese").prop("disabled", false);
+  $("#addCheese").prop("disabled", false);
 
 }
 
