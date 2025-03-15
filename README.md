@@ -1,6 +1,6 @@
 # No Cheese for the Wicked - E-Commerce Platform
 
-This project is a database-driven web application developed for **No Cheese for the Wicked**, a specialist cheese shop, to enable them to sell their products online. Built as part of a second-year university assignment, this application was my first large-scale project, demonstrating my ability to handle complex development tasks and deliver a fully functional system. The project achieved **100% marks** by meeting all functional and non-functional requirements. The application was developed using **PHP, JavaScript, jQuery, CSS, and HTML**, with a **MySQL** database backend. This application was my first project with such as big scale.
+This project is a database-driven web application developed for **No Cheese for the Wicked**, a specialist cheese shop, to enable them to sell their products online. Built as part of a second-year university assignment, this application was my first large-scale project, demonstrating my ability to handle complex development tasks and deliver a fully functional system. The project achieved **100% marks** by meeting all functional and non-functional requirements. The application was developed using **PHP, JavaScript, jQuery, CSS, and HTML**, with a **MySQL** database backend.
 
 ---
 
